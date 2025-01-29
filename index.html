@@ -9,6 +9,14 @@
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.159.0/three.min.js"></script>
 </head>
 <body>
+    <!-- A hidden form that Netlify can detect during build -->
+    <form name="consultation" netlify netlify-honeypot="bot-field" hidden>
+        <input type="text" name="name" />
+        <input type="email" name="email" />
+        <select name="project-type"></select>
+        <textarea name="description"></textarea>
+    </form>
+
     <div class="hero-container">
         <canvas id="hero-canvas"></canvas>
         <div class="content-wrapper">
@@ -67,7 +75,7 @@
             </div>
 
             <div class="consultation-form">
-                <form name="consultation" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+                <form name="consultation" method="POST" action="/success" netlify netlify-honeypot="bot-field">
                     <p class="hidden">
                         <label>Don't fill this out if you're human: <input name="bot-field" /></label>
                     </p>
