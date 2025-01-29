@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <style>
+    .footer {
+      background: #121212;
+      padding: 4rem 8rem 2rem 8rem;
+      position: relative;
+      border-top: 1px solid rgba(0, 240, 255, 0.1);
+    }
+
+    .footer-content {
+      display: grid;
+      grid-template-columns: 2fr 1fr 1fr 1fr;
+      gap: 4rem;
+      margin-bottom: 4rem;
+    }
+
+    .footer-brand {
+      max-width: 400px;
+    }
+
+    .logo {
+      width: 120px;
+      height: 120px;
+      margin-bottom: 1.5rem;
+    }
+
+    .brand-description {
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      color: #F8F8FF;
+      line-height: 1.6;
+      margin-bottom: 2rem;
+      opacity: 0.8;
+    }
+
+    .social-links {
+      display: flex;
+      gap: 1rem;
+    }
+
+    .social-icon {
+      width: 40px;
+      height: 40px;
+      background: rgba(0, 240, 255, 0.1);
+      border-radius: 8px;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      transition: all 0.3s;
+    }
+
+    .social-icon:hover {
+      background: rgba(0, 240, 255, 0.2);
+      transform: translateY(-2px);
+    }
+
+    .footer-column h3 {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.2rem;
+      color: white;
+      margin-bottom: 1.5rem;
+    }
+
+    .footer-links {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .footer-links li {
+      margin-bottom: 1rem;
+    }
+
+    .footer-links a {
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      color: #F8F8FF;
+      text-decoration: none;
+      opacity: 0.8;
+      transition: all 0.3s;
+    }
+
+    .footer-links a:hover {
+      opacity: 1;
+      color: #00F0FF;
+    }
+
+    .bottom-bar {
+      border-top: 1px solid rgba(255, 255, 255, 0.1);
+      padding-top: 2rem;
+      display: flex;
+      justify-content: space-between;
+      align-items: center;
+    }
+
+    .copyright {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      color: #F8F8FF;
+      opacity: 0.6;
+    }
+
+    .legal-links {
+      display: flex;
+      gap: 2rem;
+    }
+
+    .legal-links a {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      color: #F8F8FF;
+      text-decoration: none;
+      opacity: 0.6;
+      transition: opacity 0.3s;
+    }
+
+    .legal-links a:hover {
+      opacity: 1;
+    }
+
+    .contact-info {
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      color: #F8F8FF;
+      opacity: 0.8;
+      line-height: 1.6;
+    }
+  </style>
+</head>
+<body>
+  <footer class="footer">
+    <div class="footer-content">
+      <div class="footer-brand">
+        <img src="/api/placeholder/120/120" alt="NuTech Fusion Logo" class="logo" />
+        <p class="brand-description">
+          Transforming businesses through immersive experiences and custom AI solutions. Leading the way in technological innovation.
+        </p>
+        <div class="social-links">
+          <a href="#" class="social-icon">
+            <img src="/api/placeholder/24/24" alt="LinkedIn" />
+          </a>
+          <a href="#" class="social-icon">
+            <img src="/api/placeholder/24/24" alt="Twitter" />
+          </a>
+          <a href="#" class="social-icon">
+            <img src="/api/placeholder/24/24" alt="GitHub" />
+          </a>
+        </div>
+      </div>
+
+      <div class="footer-column">
+        <h3>Services</h3>
+        <ul class="footer-links">
+          <li><a href="#">Virtual Reality</a></li>
+          <li><a href="#">AI Integration</a></li>
+          <li><a href="#">3D Production</a></li>
+          <li><a href="#">Technical Solutions</a></li>
+          <li><a href="#">Digital Strategy</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h3>Company</h3>
+        <ul class="footer-links">
+          <li><a href="#">About Us</a></li>
+          <li><a href="#">Case Studies</a></li>
+          <li><a href="#">Technologies</a></li>
+          <li><a href="#">Contact</a></li>
+        </ul>
+      </div>
+
+      <div class="footer-column">
+        <h3>Contact</h3>
+        <div class="contact-info">
+          <p>contact@nutechfusion.com</p>
+          <p>Schedule a Call</p>
+          <p>Business Hours:<br/>Mon-Fri: 9am-6pm EST</p>
+        </div>
+      </div>
+    </div>
+
+    <div class="bottom-bar">
+      <div class="copyright">
+        © 2024 NuTech Fusion. All rights reserved.
+      </div>
+      <div class="legal-links">
+        <a href="#">Privacy Policy</a>
+        <a href="#">Terms of Service</a>
+        <a href="#">Cookie Policy</a>
+      </div>
+    </div>
+  </footer>
+</body>
+</html>

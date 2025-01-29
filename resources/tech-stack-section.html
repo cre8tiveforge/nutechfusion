@@ -1,0 +1,243 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.159.0/three.min.js"></script>
+  <style>
+    .tech-stack {
+      background: linear-gradient(180deg, #121212 0%, #1A1A1A 100%);
+      padding: 6rem 8rem;
+      position: relative;
+    }
+
+    .section-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 2.5rem;
+      color: white;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+
+    .section-subtitle {
+      font-family: 'Inter', sans-serif;
+      font-size: 1.2rem;
+      color: #F8F8FF;
+      text-align: center;
+      margin-bottom: 4rem;
+      opacity: 0.9;
+      max-width: 700px;
+      margin-left: auto;
+      margin-right: auto;
+    }
+
+    .tech-categories {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 3rem;
+    }
+
+    .tech-category {
+      background: rgba(26, 26, 26, 0.9);
+      border-radius: 12px;
+      padding: 2rem;
+      border: 1px solid rgba(0, 240, 255, 0.1);
+    }
+
+    .category-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.5rem;
+      color: #00F0FF;
+      margin-bottom: 1.5rem;
+      display: flex;
+      align-items: center;
+      gap: 0.8rem;
+    }
+
+    .tech-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 1rem;
+    }
+
+    .tech-item {
+      background: rgba(18, 18, 18, 0.6);
+      border-radius: 8px;
+      padding: 1rem;
+      transition: transform 0.3s, background 0.3s;
+      cursor: pointer;
+    }
+
+    .tech-item:hover {
+      transform: translateY(-3px);
+      background: rgba(0, 102, 255, 0.1);
+    }
+
+    .tech-name {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.1rem;
+      color: white;
+      margin-bottom: 0.4rem;
+    }
+
+    .expertise-bar {
+      height: 4px;
+      background: rgba(255, 255, 255, 0.1);
+      border-radius: 2px;
+      overflow: hidden;
+    }
+
+    .expertise-level {
+      height: 100%;
+      background: linear-gradient(90deg, #0066FF, #00F0FF);
+      border-radius: 2px;
+      transition: width 0.3s;
+    }
+
+    .tooltip {
+      position: absolute;
+      background: rgba(26, 26, 26, 0.95);
+      border: 1px solid rgba(0, 240, 255, 0.2);
+      padding: 0.8rem;
+      border-radius: 6px;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      color: white;
+      pointer-events: none;
+      opacity: 0;
+      transition: opacity 0.2s;
+      max-width: 200px;
+    }
+  </style>
+</head>
+<body>
+  <section class="tech-stack">
+    <h2 class="section-title">Technology Stack</h2>
+    <p class="section-subtitle">Our expertise spans cutting-edge technologies in AI, VR, and software development</p>
+
+    <div class="tech-categories">
+      <!-- AI & ML Technologies -->
+      <div class="tech-category">
+        <h3 class="category-title">
+          <img src="/api/placeholder/24/24" alt="AI Icon" />
+          AI & ML Platforms
+        </h3>
+        <div class="tech-grid">
+          <div class="tech-item" data-tooltip="Custom chatbots and automation">
+            <div class="tech-name">OpenAI</div>
+            <div class="expertise-bar">
+              <div class="expertise-level" style="width: 90%"></div>
+            </div>
+          </div>
+          <div class="tech-item" data-tooltip="Advanced language models">
+            <div class="tech-name">Anthropic</div>
+            <div class="expertise-bar">
+              <div class="expertise-level" style="width: 85%"></div>
+            </div>
+          </div>
+          <div class="tech-item" data-tooltip="AI integration">
+            <div class="tech-name">Mistral</div>
+            <div class="expertise-bar">
+              <div class="expertise-level" style="width: 80%"></div>
+            </div>
+          </div>
+          <div class="tech-item" data-tooltip="Voice synthesis">
+            <div class="tech-name">Eleven Labs</div>
+            <div class="expertise-bar">
+              <div class="expertise-level" style="width: 75%"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- VR Development -->
+      <div class="tech-category">
+        <h3 class="category-title">
+          <img src="/api/placeholder/24/24" alt="VR Icon" />
+          VR Development
+        </h3>
+        <div class="tech-grid">
+          <div class="tech-item" data-tooltip="VR/AR development">
+            <div class="tech-name">Unity</div>
+            <div class="expertise-bar">
+              <div class="expertise-level" style="width: 95%"></div>
+            </div>
+          </div>
+          <div class="tech-item" data-tooltip="Game engine">
+            <div class="tech-name">Unreal</div>
+            <div class="expertise-bar">
+              <div class="expertise-level" style="width: 80%"></div>
+            </div>
+          </div>
+          <div class="tech-item" data-tooltip="3D modeling">
+            <div class="tech-name">Blender</div>
+            <div class="expertise-bar">
+              <div class="expertise-level" style="width: 90%"></div>
+            </div>
+          </div>
+          <div class="tech-item" data-tooltip="Texturing">
+            <div class="tech-name">Substance</div>
+            <div class="expertise-bar">
+              <div class="expertise-level" style="width: 85%"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <!-- Development Tools -->
+      <div class="tech-category">
+        <h3 class="category-title">
+          <img src="/api/placeholder/24/24" alt="Dev Icon" />
+          Development
+        </h3>
+        <div class="tech-grid">
+          <div class="tech-item" data-tooltip="AI/ML development">
+            <div class="tech-name">Python</div>
+            <div class="expertise-bar">
+              <div class="expertise-level" style="width: 90%"></div>
+            </div>
+          </div>
+          <div class="tech-item" data-tooltip="Game development">
+            <div class="tech-name">C#</div>
+            <div class="expertise-bar">
+              <div class="expertise-level" style="width: 85%"></div>
+            </div>
+          </div>
+          <div class="tech-item" data-tooltip="Web development">
+            <div class="tech-name">JavaScript</div>
+            <div class="expertise-bar">
+              <div class="expertise-level" style="width: 80%"></div>
+            </div>
+          </div>
+          <div class="tech-item" data-tooltip="Web frameworks">
+            <div class="tech-name">React/Next.js</div>
+            <div class="expertise-bar">
+              <div class="expertise-level" style="width: 75%"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // Tooltip functionality
+    const techItems = document.querySelectorAll('.tech-item');
+    const tooltip = document.createElement('div');
+    tooltip.className = 'tooltip';
+    document.body.appendChild(tooltip);
+
+    techItems.forEach(item => {
+      item.addEventListener('mousemove', (e) => {
+        const tooltipText = item.getAttribute('data-tooltip');
+        tooltip.textContent = tooltipText;
+        tooltip.style.opacity = '1';
+        tooltip.style.left = e.pageX + 10 + 'px';
+        tooltip.style.top = e.pageY + 10 + 'px';
+      });
+
+      item.addEventListener('mouseleave', () => {
+        tooltip.style.opacity = '0';
+      });
+    });
+  </script>
+</body>
+</html>

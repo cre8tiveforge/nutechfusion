@@ -1,0 +1,194 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.159.0/three.min.js"></script>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    
+    .hero-container {
+      position: relative;
+      width: 100%;
+      height: 100vh;
+      background: linear-gradient(45deg, #121212, #1A1A1A);
+      overflow: hidden;
+    }
+
+    #hero-canvas {
+      position: absolute;
+      top: 0;
+      left: 0;
+      z-index: 1;
+    }
+
+    .content-wrapper {
+      position: relative;
+      z-index: 2;
+      height: 100%;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 0 8rem;
+      color: white;
+    }
+
+    .logo {
+      width: 80px;
+      height: 80px;
+      margin-bottom: 2rem;
+    }
+
+    .headline {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 4.5rem;
+      font-weight: 700;
+      margin-bottom: 1.5rem;
+      background: linear-gradient(135deg, #FFFFFF 0%, #00F0FF 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+      max-width: 900px;
+      line-height: 1.2;
+    }
+
+    .subheadline {
+      font-family: 'Inter', sans-serif;
+      font-size: 1.5rem;
+      color: #F8F8FF;
+      margin-bottom: 2rem;
+      max-width: 700px;
+      margin-top: 2rem;
+    }
+
+    .cta-button {
+      background: linear-gradient(135deg, #0066FF 0%, #6600FF 100%);
+      border: none;
+      padding: 1rem 2rem;
+      color: white;
+      font-family: 'Inter', sans-serif;
+      font-size: 1.1rem;
+      border-radius: 4px;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+      margin-top: 2rem;
+      width: fit-content;
+    }
+
+    .cta-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 20px rgba(0, 240, 255, 0.3);
+    }
+
+    .stats-container {
+      display: flex;
+      gap: 2rem;
+      margin-top: 4rem;
+    }
+
+    .stat-card {
+      background: rgba(26, 26, 26, 0.8);
+      backdrop-filter: blur(10px);
+      padding: 1.5rem 2rem;
+      border-radius: 4px;
+      border: 1px solid rgba(0, 240, 255, 0.1);
+    }
+
+    .stat-number {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 2.5rem;
+      color: #00F0FF;
+      margin-bottom: 0.5rem;
+    }
+
+    .stat-label {
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      color: #F8F8FF;
+    }
+  </style>
+</head>
+<body>
+  <div class="hero-container">
+    <canvas id="hero-canvas"></canvas>
+    <div class="content-wrapper">
+      <img src="/api/placeholder/80/80" alt="NuTech Fusion Logo" class="logo" />
+      <h1 class="headline">Transforming Business Through AI & Virtual Reality</h1>
+      <p class="subheadline">Custom AI Solutions & Immersive Experiences for Forward-Thinking Companies</p>
+      
+      <div class="stats-container">
+        <div class="stat-card">
+          <div class="stat-number">10+</div>
+          <div class="stat-label">Years Experience</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">50+</div>
+          <div class="stat-label">Projects Completed</div>
+        </div>
+        <div class="stat-card">
+          <div class="stat-number">15+</div>
+          <div class="stat-label">Technologies</div>
+        </div>
+      </div>
+
+      <button class="cta-button">Schedule a Consultation</button>
+    </div>
+  </div>
+
+  <script>
+    // Three.js implementation
+    const scene = new THREE.Scene();
+    const camera = new THREE.PerspectiveCamera(75, window.innerWidth / window.innerHeight, 0.1, 1000);
+    const renderer = new THREE.WebGLRenderer({
+      canvas: document.querySelector('#hero-canvas'),
+      alpha: true
+    });
+    
+    renderer.setSize(window.innerWidth, window.innerHeight);
+    camera.position.z = 5;
+
+    // Create animated background elements
+    const particles = new THREE.Group();
+    const particleGeometry = new THREE.SphereGeometry(0.05, 8, 8);
+    const particleMaterial = new THREE.MeshBasicMaterial({ 
+      color: 0x00F0FF,
+      transparent: true,
+      opacity: 0.4
+    });
+
+    for (let i = 0; i < 100; i++) {
+      const particle = new THREE.Mesh(particleGeometry, particleMaterial);
+      particle.position.x = (Math.random() - 0.5) * 15;
+      particle.position.y = (Math.random() - 0.5) * 15;
+      particle.position.z = (Math.random() - 0.5) * 15;
+      particles.add(particle);
+    }
+
+    scene.add(particles);
+
+    function animate() {
+      requestAnimationFrame(animate);
+      
+      particles.rotation.x += 0.0005;
+      particles.rotation.y += 0.001;
+      
+      particles.children.forEach(particle => {
+        particle.rotation.x += 0.005;
+        particle.rotation.y += 0.005;
+      });
+
+      renderer.render(scene, camera);
+    }
+
+    animate();
+
+    // Handle window resize
+    window.addEventListener('resize', () => {
+      const width = window.innerWidth;
+      const height = window.innerHeight;
+      
+      camera.aspect = width / height;
+      camera.updateProjectionMatrix();
+      
+      renderer.setSize(width, height);
+    });
+  </script>
+</body>
+</html>

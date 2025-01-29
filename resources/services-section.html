@@ -1,0 +1,202 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.159.0/three.min.js"></script>
+  <style>
+    .services-section {
+      background: linear-gradient(180deg, #1A1A1A 0%, #121212 100%);
+      padding: 6rem 8rem;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .section-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 2.5rem;
+      color: white;
+      margin-bottom: 4rem;
+      text-align: center;
+    }
+
+    .primary-services {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 3rem;
+      margin-bottom: 6rem;
+    }
+
+    .service-card {
+      background: rgba(26, 26, 26, 0.9);
+      border: 1px solid rgba(0, 240, 255, 0.1);
+      border-radius: 8px;
+      padding: 2.5rem;
+      transition: transform 0.3s, box-shadow 0.3s;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .service-card:hover {
+      transform: translateY(-5px);
+      box-shadow: 0 10px 30px rgba(0, 102, 255, 0.1);
+    }
+
+    .service-card::before {
+      content: '';
+      position: absolute;
+      top: 0;
+      left: 0;
+      right: 0;
+      height: 2px;
+      background: linear-gradient(90deg, #0066FF, #6600FF);
+    }
+
+    .card-icon {
+      width: 48px;
+      height: 48px;
+      margin-bottom: 1.5rem;
+      color: #00F0FF;
+    }
+
+    .card-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.8rem;
+      color: white;
+      margin-bottom: 1rem;
+    }
+
+    .card-description {
+      font-family: 'Inter', sans-serif;
+      font-size: 1.1rem;
+      color: #F8F8FF;
+      margin-bottom: 1.5rem;
+      line-height: 1.6;
+    }
+
+    .feature-list {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+
+    .feature-item {
+      font-family: 'Inter', sans-serif;
+      color: #F8F8FF;
+      margin-bottom: 0.8rem;
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+    }
+
+    .feature-item::before {
+      content: '•';
+      color: #00F0FF;
+    }
+
+    .learn-more {
+      font-family: 'Inter', sans-serif;
+      color: #00F0FF;
+      text-decoration: none;
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      margin-top: 1.5rem;
+      transition: gap 0.3s;
+    }
+
+    .learn-more:hover {
+      gap: 0.8rem;
+    }
+
+    .secondary-services {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 2rem;
+    }
+
+    .secondary-card {
+      background: rgba(26, 26, 26, 0.6);
+      border: 1px solid rgba(0, 240, 255, 0.05);
+      border-radius: 8px;
+      padding: 2rem;
+      transition: transform 0.3s;
+    }
+
+    .secondary-card:hover {
+      transform: translateY(-3px);
+    }
+
+    .secondary-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.4rem;
+      color: white;
+      margin-bottom: 0.8rem;
+    }
+
+    .secondary-description {
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      color: #F8F8FF;
+      line-height: 1.5;
+    }
+  </style>
+</head>
+<body>
+  <section class="services-section">
+    <h2 class="section-title">Our Services</h2>
+    
+    <div class="primary-services">
+      <!-- VR Service Card -->
+      <div class="service-card">
+        <div class="card-icon">
+          <img src="/api/placeholder/48/48" alt="VR Icon" />
+        </div>
+        <h3 class="card-title">Virtual Reality Solutions</h3>
+        <p class="card-description">Create immersive experiences that transform how your business interacts with clients and handles operations.</p>
+        <ul class="feature-list">
+          <li class="feature-item">Architectural Visualization</li>
+          <li class="feature-item">Training Simulations</li>
+          <li class="feature-item">Virtual Product Showcases</li>
+          <li class="feature-item">Interactive Environments</li>
+        </ul>
+        <a href="#" class="learn-more">Explore VR Services →</a>
+      </div>
+
+      <!-- AI Service Card -->
+      <div class="service-card">
+        <div class="card-icon">
+          <img src="/api/placeholder/48/48" alt="AI Icon" />
+        </div>
+        <h3 class="card-title">AI Integration</h3>
+        <p class="card-description">Leverage cutting-edge AI technology to automate processes and enhance decision-making capabilities.</p>
+        <ul class="feature-list">
+          <li class="feature-item">Custom Chatbots</li>
+          <li class="feature-item">Process Automation</li>
+          <li class="feature-item">Content Generation</li>
+          <li class="feature-item">Business Intelligence</li>
+        </ul>
+        <a href="#" class="learn-more">Explore AI Services →</a>
+      </div>
+    </div>
+
+    <div class="secondary-services">
+      <!-- 3D Production -->
+      <div class="secondary-card">
+        <h3 class="secondary-title">3D Production</h3>
+        <p class="secondary-description">Professional 3D modeling, animation, and visual effects for various applications.</p>
+      </div>
+
+      <!-- Technical Solutions -->
+      <div class="secondary-card">
+        <h3 class="secondary-title">Technical Solutions</h3>
+        <p class="secondary-description">Custom software development and hardware optimization services.</p>
+      </div>
+
+      <!-- Digital Strategy -->
+      <div class="secondary-card">
+        <h3 class="secondary-title">Digital Strategy</h3>
+        <p class="secondary-description">Comprehensive digital transformation and marketing solutions.</p>
+      </div>
+    </div>
+  </section>
+</body>
+</html>

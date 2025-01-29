@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.159.0/three.min.js"></script>
+  <style>
+    .consultation-section {
+      background: linear-gradient(180deg, #1A1A1A 0%, #121212 100%);
+      padding: 6rem 8rem;
+      position: relative;
+    }
+
+    .section-content {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4rem;
+      max-width: 1400px;
+      margin: 0 auto;
+    }
+
+    .contact-info {
+      padding-right: 2rem;
+    }
+
+    .section-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 2.5rem;
+      color: white;
+      margin-bottom: 1.5rem;
+      background: linear-gradient(135deg, #FFFFFF 0%, #00F0FF 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .section-description {
+      font-family: 'Inter', sans-serif;
+      font-size: 1.1rem;
+      color: #F8F8FF;
+      line-height: 1.6;
+      margin-bottom: 2rem;
+    }
+
+    .consultation-form {
+      background: rgba(26, 26, 26, 0.9);
+      border: 1px solid rgba(0, 240, 255, 0.1);
+      border-radius: 12px;
+      padding: 2.5rem;
+    }
+
+    .form-group {
+      margin-bottom: 1.5rem;
+    }
+
+    .form-label {
+      display: block;
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1rem;
+      color: #F8F8FF;
+      margin-bottom: 0.5rem;
+    }
+
+    .form-input,
+    .form-select,
+    .form-textarea {
+      width: 100%;
+      background: rgba(18, 18, 18, 0.8);
+      border: 1px solid rgba(0, 240, 255, 0.2);
+      border-radius: 6px;
+      padding: 0.8rem 1rem;
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      color: white;
+      transition: border-color 0.3s;
+    }
+
+    .form-input:focus,
+    .form-select:focus,
+    .form-textarea:focus {
+      outline: none;
+      border-color: #00F0FF;
+    }
+
+    .form-textarea {
+      height: 120px;
+      resize: vertical;
+    }
+
+    .submit-button {
+      background: linear-gradient(135deg, #0066FF 0%, #6600FF 100%);
+      border: none;
+      padding: 1rem 2rem;
+      color: white;
+      font-family: 'Inter', sans-serif;
+      font-size: 1.1rem;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: transform 0.2s, box-shadow 0.2s;
+      width: 100%;
+    }
+
+    .submit-button:hover {
+      transform: translateY(-2px);
+      box-shadow: 0 0 20px rgba(0, 240, 255, 0.3);
+    }
+
+    .contact-methods {
+      margin-top: 2rem;
+    }
+
+    .contact-method {
+      display: flex;
+      align-items: center;
+      gap: 1rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .method-icon {
+      width: 24px;
+      height: 24px;
+      color: #00F0FF;
+    }
+
+    .method-text {
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      color: #F8F8FF;
+    }
+
+    .project-types {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 1rem;
+      margin-bottom: 2rem;
+    }
+
+    .project-type {
+      background: rgba(0, 102, 255, 0.1);
+      border: 1px solid rgba(0, 240, 255, 0.2);
+      border-radius: 20px;
+      padding: 0.5rem 1rem;
+      font-family: 'Inter', sans-serif;
+      color: #F8F8FF;
+      cursor: pointer;
+      transition: all 0.3s;
+    }
+
+    .project-type:hover {
+      background: rgba(0, 102, 255, 0.2);
+      transform: translateY(-2px);
+    }
+
+    .project-type.active {
+      background: linear-gradient(135deg, #0066FF 0%, #6600FF 100%);
+      border-color: transparent;
+    }
+  </style>
+</head>
+<body>
+  <section class="consultation-section">
+    <div class="section-content">
+      <div class="contact-info">
+        <h2 class="section-title">Let's Build Something Amazing</h2>
+        <p class="section-description">
+          Ready to transform your business with cutting-edge technology? Whether you have a specific project in mind or need help exploring the possibilities, we're here to help.
+        </p>
+
+        <div class="project-types">
+          <div class="project-type">Virtual Reality</div>
+          <div class="project-type">AI Integration</div>
+          <div class="project-type">3D Production</div>
+          <div class="project-type">Technical Solutions</div>
+        </div>
+
+        <div class="contact-methods">
+          <div class="contact-method">
+            <img src="/api/placeholder/24/24" alt="Email Icon" class="method-icon" />
+            <span class="method-text">contact@nutechfusion.com</span>
+          </div>
+          <div class="contact-method">
+            <img src="/api/placeholder/24/24" alt="Phone Icon" class="method-icon" />
+            <span class="method-text">Schedule a Call</span>
+          </div>
+        </div>
+      </div>
+
+      <div class="consultation-form">
+        <form name="consultation" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+          <p class="hidden">
+            <label>Don't fill this out if you're human: <input name="bot-field" /></label>
+          </p>
+          <input type="hidden" name="form-name" value="consultation" />
+          
+          <div class="form-group">
+            <label class="form-label">Name</label>
+            <input type="text" name="name" class="form-input" placeholder="Your name" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Email</label>
+            <input type="email" name="email" class="form-input" placeholder="Your email" required>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Project Type</label>
+            <select name="project-type" class="form-select" required>
+              <option value="">Select project type</option>
+              <option value="vr">Virtual Reality</option>
+              <option value="ai">AI Integration</option>
+              <option value="3d">3D Production</option>
+              <option value="tech">Technical Solutions</option>
+            </select>
+          </div>
+
+          <div class="form-group">
+            <label class="form-label">Project Description</label>
+            <textarea name="description" class="form-textarea" placeholder="Tell us about your project" required></textarea>
+          </div>
+
+          <button type="submit" class="submit-button">Schedule Consultation</button>
+        </form>
+      </div>
+    </div>
+  </section>
+
+  <script>
+    // Project type selection
+    const projectTypes = document.querySelectorAll('.project-type');
+    projectTypes.forEach(type => {
+      type.addEventListener('click', () => {
+        type.classList.toggle('active');
+      });
+    });
+  </script>
+</body>
+</html>

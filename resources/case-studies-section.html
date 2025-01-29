@@ -1,0 +1,222 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.159.0/three.min.js"></script>
+  <style>
+    .case-studies {
+      background: #121212;
+      padding: 6rem 8rem;
+      position: relative;
+    }
+
+    .section-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 2.5rem;
+      color: white;
+      margin-bottom: 1rem;
+      text-align: center;
+    }
+
+    .section-subtitle {
+      font-family: 'Inter', sans-serif;
+      font-size: 1.2rem;
+      color: #F8F8FF;
+      text-align: center;
+      margin-bottom: 4rem;
+      opacity: 0.9;
+    }
+
+    .case-grid {
+      display: grid;
+      grid-template-columns: repeat(2, 1fr);
+      gap: 3rem;
+    }
+
+    .case-card {
+      background: rgba(26, 26, 26, 0.9);
+      border-radius: 12px;
+      overflow: hidden;
+      transition: transform 0.3s;
+    }
+
+    .case-card:hover {
+      transform: translateY(-5px);
+    }
+
+    .case-image {
+      width: 100%;
+      height: 300px;
+      background: #1A1A1A;
+      position: relative;
+      overflow: hidden;
+    }
+
+    .case-content {
+      padding: 2rem;
+    }
+
+    .case-tag {
+      display: inline-block;
+      padding: 0.5rem 1rem;
+      background: linear-gradient(135deg, #0066FF 0%, #6600FF 100%);
+      border-radius: 20px;
+      color: white;
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      margin-bottom: 1rem;
+    }
+
+    .case-title {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.8rem;
+      color: white;
+      margin-bottom: 1rem;
+    }
+
+    .case-description {
+      font-family: 'Inter', sans-serif;
+      font-size: 1.1rem;
+      color: #F8F8FF;
+      margin-bottom: 1.5rem;
+      line-height: 1.6;
+    }
+
+    .case-stats {
+      display: flex;
+      gap: 2rem;
+      margin-bottom: 1.5rem;
+    }
+
+    .stat {
+      flex: 1;
+    }
+
+    .stat-label {
+      font-family: 'Inter', sans-serif;
+      font-size: 0.9rem;
+      color: #00F0FF;
+      margin-bottom: 0.3rem;
+    }
+
+    .stat-value {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.2rem;
+      color: white;
+    }
+
+    .case-link {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.5rem;
+      font-family: 'Inter', sans-serif;
+      color: #00F0FF;
+      text-decoration: none;
+      transition: gap 0.3s;
+    }
+
+    .case-link:hover {
+      gap: 0.8rem;
+    }
+  </style>
+</head>
+<body>
+  <section class="case-studies">
+    <h2 class="section-title">Featured Projects</h2>
+    <p class="section-subtitle">Innovative solutions that deliver real-world impact</p>
+
+    <div class="case-grid">
+      <!-- Church Visualization Project -->
+      <div class="case-card">
+        <div class="case-image">
+          <img src="/api/placeholder/600/300" alt="Church Visualization Project" />
+        </div>
+        <div class="case-content">
+          <span class="case-tag">Virtual Reality</span>
+          <h3 class="case-title">Community Development Visualization</h3>
+          <p class="case-description">Created a 1:1 scale VR experience enabling stakeholders to visualize the impact of a new assisted living facility in their community.</p>
+          <div class="case-stats">
+            <div class="stat">
+              <div class="stat-label">Scale</div>
+              <div class="stat-value">1:1 Ratio</div>
+            </div>
+            <div class="stat">
+              <div class="stat-label">Visualization</div>
+              <div class="stat-value">Full Property</div>
+            </div>
+          </div>
+          <a href="#" class="case-link">View Case Study →</a>
+        </div>
+      </div>
+
+      <!-- ADHD Empathy Tool -->
+      <div class="case-card">
+        <div class="case-image">
+          <img src="/api/placeholder/600/300" alt="ADHD Empathy Tool" />
+        </div>
+        <div class="case-content">
+          <span class="case-tag">Medical VR</span>
+          <h3 class="case-title">ADHD Empathy Experience</h3>
+          <p class="case-description">Developed an immersive VR tool helping parents understand their children's ADHD experience through first-person simulation.</p>
+          <div class="case-stats">
+            <div class="stat">
+              <div class="stat-label">Application</div>
+              <div class="stat-value">Medical Training</div>
+            </div>
+            <div class="stat">
+              <div class="stat-label">Platform</div>
+              <div class="stat-value">Multi-Device VR</div>
+            </div>
+          </div>
+          <a href="#" class="case-link">View Case Study →</a>
+        </div>
+      </div>
+
+      <!-- Oil Rig Training -->
+      <div class="case-card">
+        <div class="case-image">
+          <img src="/api/placeholder/600/300" alt="Oil Rig Training" />
+        </div>
+        <div class="case-content">
+          <span class="case-tag">Industrial VR</span>
+          <h3 class="case-title">Oil Rig Training Simulator</h3>
+          <p class="case-description">Built a comprehensive VR training environment for oil rig operations, enabling safe and effective worker training.</p>
+          <div class="case-stats">
+            <div class="stat">
+              <div class="stat-label">Industry</div>
+              <div class="stat-value">Industrial</div>
+            </div>
+            <div class="stat">
+              <div class="stat-label">Type</div>
+              <div class="stat-value">Training Sim</div>
+            </div>
+          </div>
+          <a href="#" class="case-link">View Case Study →</a>
+        </div>
+      </div>
+
+      <!-- AI Integration Project -->
+      <div class="case-card">
+        <div class="case-image">
+          <img src="/api/placeholder/600/300" alt="AI Integration" />
+        </div>
+        <div class="case-content">
+          <span class="case-tag">AI Solution</span>
+          <h3 class="case-title">Multi-Model AI System</h3>
+          <p class="case-description">Developed a sophisticated AI system that leverages multiple models to provide optimal responses and automate complex workflows.</p>
+          <div class="case-stats">
+            <div class="stat">
+              <div class="stat-label">Integration</div>
+              <div class="stat-value">Multi-Platform</div>
+            </div>
+            <div class="stat">
+              <div class="stat-label">Type</div>
+              <div class="stat-value">Custom AI</div>
+            </div>
+          </div>
+          <a href="#" class="case-link">View Case Study →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+</body>
+</html>
