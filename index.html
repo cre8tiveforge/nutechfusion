@@ -31,9 +31,89 @@
                 </div>
             </div>
 
-            <button class="cta-button">Schedule a Consultation</button>
+            <button class="cta-button" onclick="document.querySelector('.consultation-section').scrollIntoView({ behavior: 'smooth' })">Schedule a Consultation</button>
         </div>
     </div>
+
+    <section class="consultation-section">
+        <div class="section-content">
+            <div class="contact-info">
+                <h2 class="section-title">Let's Build Something Amazing</h2>
+                <p class="section-description">
+                    Ready to transform your business with cutting-edge technology? Whether you have a specific project in mind or need help exploring the possibilities, we're here to help.
+                </p>
+
+                <div class="project-types">
+                    <div class="project-type">Virtual Reality</div>
+                    <div class="project-type">AI Integration</div>
+                    <div class="project-type">3D Production</div>
+                    <div class="project-type">Technical Solutions</div>
+                </div>
+
+                <div class="contact-methods">
+                    <div class="contact-method">
+                        <svg class="method-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 4l-8 5-8-5V6l8 5 8-5v2z"/>
+                        </svg>
+                        <span class="method-text">contact@nutechfusion.com</span>
+                    </div>
+                    <div class="contact-method">
+                        <svg class="method-icon" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                            <path d="M20 15.5c-1.2 0-2.4-.2-3.6-.6-.3-.1-.7 0-1 .2l-2.2 2.2c-2.8-1.4-5.1-3.8-6.6-6.6l2.2-2.2c.3-.3.4-.7.2-1-.3-1.1-.5-2.3-.5-3.5 0-.6-.4-1-1-1H4c-.6 0-1 .4-1 1 0 9.4 7.6 17 17 17 .6 0 1-.4 1-1v-3.5c0-.6-.4-1-1-1zM19 12h2c0-4.8-3.9-8.7-8.7-8.7v2c3.7 0 6.7 3 6.7 6.7z"/>
+                        </svg>
+                        <span class="method-text">Schedule a Call</span>
+                    </div>
+                </div>
+            </div>
+
+            <div class="consultation-form">
+                <form name="consultation" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+                    <p class="hidden">
+                        <label>Don't fill this out if you're human: <input name="bot-field" /></label>
+                    </p>
+                    <input type="hidden" name="form-name" value="consultation" />
+                    
+                    <div class="form-group">
+                        <label class="form-label">Name</label>
+                        <input type="text" name="name" class="form-input" placeholder="Your name" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Email</label>
+                        <input type="email" name="email" class="form-input" placeholder="Your email" required>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Project Type</label>
+                        <select name="project-type" class="form-select" required>
+                            <option value="">Select project type</option>
+                            <option value="vr">Virtual Reality</option>
+                            <option value="ai">AI Integration</option>
+                            <option value="3d">3D Production</option>
+                            <option value="tech">Technical Solutions</option>
+                        </select>
+                    </div>
+
+                    <div class="form-group">
+                        <label class="form-label">Project Description</label>
+                        <textarea name="description" class="form-textarea" placeholder="Tell us about your project" required></textarea>
+                    </div>
+
+                    <button type="submit" class="submit-button">Schedule Consultation</button>
+                </form>
+            </div>
+        </div>
+    </section>
+
     <script src="js/hero-animation.js"></script>
+    <script>
+        // Project type selection
+        const projectTypes = document.querySelectorAll('.project-type');
+        projectTypes.forEach(type => {
+            type.addEventListener('click', () => {
+                type.classList.toggle('active');
+            });
+        });
+    </script>
 </body>
 </html> 

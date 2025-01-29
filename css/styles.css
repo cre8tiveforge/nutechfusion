@@ -113,4 +113,182 @@
 
 .hidden {
     display: none;
+}
+
+/* Consultation Section Styles */
+.consultation-section {
+    background: linear-gradient(180deg, #1A1A1A 0%, #121212 100%);
+    padding: 6rem 8rem;
+    position: relative;
+}
+
+.section-content {
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    gap: 4rem;
+    max-width: 1400px;
+    margin: 0 auto;
+}
+
+.contact-info {
+    padding-right: 2rem;
+}
+
+.section-title {
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 2.5rem;
+    color: white;
+    margin-bottom: 1.5rem;
+    background: linear-gradient(135deg, #FFFFFF 0%, #00F0FF 100%);
+    -webkit-background-clip: text;
+    -webkit-text-fill-color: transparent;
+}
+
+.section-description {
+    font-family: 'Inter', sans-serif;
+    font-size: 1.1rem;
+    color: #F8F8FF;
+    line-height: 1.6;
+    margin-bottom: 2rem;
+}
+
+.consultation-form {
+    background: rgba(26, 26, 26, 0.9);
+    border: 1px solid rgba(0, 240, 255, 0.1);
+    border-radius: 12px;
+    padding: 2.5rem;
+}
+
+.form-group {
+    margin-bottom: 1.5rem;
+}
+
+.form-label {
+    display: block;
+    font-family: 'Space Grotesk', sans-serif;
+    font-size: 1rem;
+    color: #F8F8FF;
+    margin-bottom: 0.5rem;
+}
+
+.form-input,
+.form-select,
+.form-textarea {
+    width: 100%;
+    background: rgba(18, 18, 18, 0.8);
+    border: 1px solid rgba(0, 240, 255, 0.2);
+    border-radius: 6px;
+    padding: 0.8rem 1rem;
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    color: white;
+    transition: border-color 0.3s;
+}
+
+.form-input:focus,
+.form-select:focus,
+.form-textarea:focus {
+    outline: none;
+    border-color: #00F0FF;
+}
+
+.form-textarea {
+    height: 120px;
+    resize: vertical;
+}
+
+.submit-button {
+    background: linear-gradient(135deg, #0066FF 0%, #6600FF 100%);
+    border: none;
+    padding: 1rem 2rem;
+    color: white;
+    font-family: 'Inter', sans-serif;
+    font-size: 1.1rem;
+    border-radius: 6px;
+    cursor: pointer;
+    transition: transform 0.2s, box-shadow 0.2s;
+    width: 100%;
+}
+
+.submit-button:hover {
+    transform: translateY(-2px);
+    box-shadow: 0 0 20px rgba(0, 240, 255, 0.3);
+}
+
+.contact-methods {
+    margin-top: 2rem;
+}
+
+.contact-method {
+    display: flex;
+    align-items: center;
+    gap: 1rem;
+    margin-bottom: 1.5rem;
+}
+
+.method-icon {
+    width: 24px;
+    height: 24px;
+    color: #00F0FF;
+}
+
+.method-text {
+    font-family: 'Inter', sans-serif;
+    font-size: 1rem;
+    color: #F8F8FF;
+}
+
+.project-types {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 1rem;
+    margin-bottom: 2rem;
+}
+
+.project-type {
+    background: rgba(0, 102, 255, 0.1);
+    border: 1px solid rgba(0, 240, 255, 0.2);
+    border-radius: 20px;
+    padding: 0.5rem 1rem;
+    font-family: 'Inter', sans-serif;
+    color: #F8F8FF;
+    cursor: pointer;
+    transition: all 0.3s;
+}
+
+.project-type:hover {
+    background: rgba(0, 102, 255, 0.2);
+    transform: translateY(-2px);
+}
+
+.project-type.active {
+    background: linear-gradient(135deg, #0066FF 0%, #6600FF 100%);
+    border-color: transparent;
+}
+
+/* Responsive Design */
+@media (max-width: 1024px) {
+    .consultation-section {
+        padding: 4rem 2rem;
+    }
+
+    .section-content {
+        grid-template-columns: 1fr;
+        gap: 2rem;
+    }
+
+    .contact-info {
+        padding-right: 0;
+    }
+}
+
+@media (max-width: 768px) {
+    .project-types {
+        gap: 0.5rem;
+    }
+
+    .project-type {
+        font-size: 0.9rem;
+        padding: 0.4rem 0.8rem;
+    }
 } 
