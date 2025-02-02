@@ -152,6 +152,65 @@
       background: linear-gradient(135deg, #0066FF 0%, #6600FF 100%);
       border-color: transparent;
     }
+
+    /* Success Message Popup Styles */
+    .success-popup {
+      display: none;
+      position: fixed;
+      top: 50%;
+      left: 50%;
+      transform: translate(-50%, -50%);
+      background: rgba(26, 26, 26, 0.95);
+      border: 1px solid rgba(0, 240, 255, 0.2);
+      border-radius: 12px;
+      padding: 2rem;
+      z-index: 1000;
+      text-align: center;
+      box-shadow: 0 0 30px rgba(0, 240, 255, 0.2);
+    }
+
+    .success-popup.show {
+      display: block;
+      animation: fadeIn 0.3s ease-out;
+    }
+
+    .success-message {
+      font-family: 'Space Grotesk', sans-serif;
+      font-size: 1.5rem;
+      color: white;
+      margin-bottom: 1rem;
+      background: linear-gradient(135deg, #FFFFFF 0%, #00F0FF 100%);
+      -webkit-background-clip: text;
+      -webkit-text-fill-color: transparent;
+    }
+
+    .success-description {
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      color: #F8F8FF;
+      margin-bottom: 1.5rem;
+    }
+
+    .close-popup {
+      background: linear-gradient(135deg, #0066FF 0%, #6600FF 100%);
+      border: none;
+      padding: 0.8rem 1.5rem;
+      color: white;
+      font-family: 'Inter', sans-serif;
+      font-size: 1rem;
+      border-radius: 6px;
+      cursor: pointer;
+      transition: transform 0.2s;
+    }
+
+    .close-popup:hover {
+      transform: translateY(-2px);
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
   </style>
 </head>
 <body>
@@ -183,7 +242,7 @@
       </div>
 
       <div class="consultation-form">
-        <form name="consultation" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+        <form name="consultation" method="POST" data-netlify="true" netlify-honeypot="bot-field" id="consultationForm">
           <p class="hidden">
             <label>Don't fill this out if you're human: <input name="bot-field" /></label>
           </p>
@@ -221,6 +280,13 @@
     </div>
   </section>
 
+  <!-- Success Popup -->
+  <div class="success-popup" id="successPopup">
+    <h3 class="success-message">Thank You!</h3>
+    <p class="success-description">Thank you for your submission. We'll be reaching out to you very soon to discuss your project.</p>
+    <button class="close-popup" id="closePopup">Close</button>
+  </div>
+
   <script>
     // Project type selection
     const projectTypes = document.querySelectorAll('.project-type');
@@ -228,6 +294,42 @@
       type.addEventListener('click', () => {
         type.classList.toggle('active');
       });
+    });
+
+    // Form submission handling
+    const form = document.getElementById('consultationForm');
+    const successPopup = document.getElementById('successPopup');
+    const closePopupBtn = document.getElementById('closePopup');
+
+    form.addEventListener('submit', async (e) => {
+      e.preventDefault();
+
+      try {
+        await fetch('/', {
+          method: 'POST',
+          body: new FormData(form)
+        });
+        
+        // Clear form
+        form.reset();
+        
+        // Show success popup
+        successPopup.classList.add('show');
+      } catch (error) {
+        console.error('Error:', error);
+      }
+    });
+
+    // Close popup button
+    closePopupBtn.addEventListener('click', () => {
+      successPopup.classList.remove('show');
+    });
+
+    // Close popup when clicking outside
+    window.addEventListener('click', (e) => {
+      if (e.target === successPopup) {
+        successPopup.classList.remove('show');
+      }
     });
   </script>
 </body>
