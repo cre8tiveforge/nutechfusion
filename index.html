@@ -7,6 +7,33 @@
     <link href="https://fonts.googleapis.com/css2?family=Space+Grotesk:wght@700&family=Inter:wght@400;500&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="css/styles.css">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/three.js/0.159.0/three.min.js"></script>
+    <style>
+        .success-popup {
+            display: none;
+            position: fixed;
+            top: 20px;
+            right: 20px;
+            background: linear-gradient(135deg, #0066FF 0%, #6600FF 100%);
+            color: white;
+            padding: 1rem 2rem;
+            border-radius: 8px;
+            z-index: 1000;
+            font-family: 'Inter', sans-serif;
+            animation: slideIn 0.3s ease-out;
+            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+        }
+
+        @keyframes slideIn {
+            from {
+                transform: translateX(100%);
+                opacity: 0;
+            }
+            to {
+                transform: translateX(0);
+                opacity: 1;
+            }
+        }
+    </style>
 </head>
 <body>
     <!-- A hidden form that Netlify can detect during build -->
@@ -16,6 +43,10 @@
         <select name="project-type"></select>
         <textarea name="description"></textarea>
     </form>
+
+    <div class="success-popup" id="successPopup">
+        Message sent successfully! We'll get back to you soon.
+    </div>
 
     <div class="hero-container">
         <canvas id="hero-canvas"></canvas>
@@ -75,7 +106,7 @@
             </div>
 
             <div class="consultation-form">
-                <form name="consultation" method="POST" action="/success" netlify netlify-honeypot="bot-field">
+                <form name="consultation" method="POST" id="consultationForm">
                     <p class="hidden">
                         <label>Don't fill this out if you're human: <input name="bot-field" /></label>
                     </p>
@@ -136,6 +167,40 @@
             type.addEventListener('click', () => {
                 type.classList.toggle('active');
             });
+        });
+
+        // Form submission handling
+        const form = document.getElementById('consultationForm');
+        const successPopup = document.getElementById('successPopup');
+
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            try {
+                const response = await fetch('/', {
+                    method: 'POST',
+                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+                    body: new URLSearchParams(new FormData(form)).toString()
+                });
+                
+                if (response.ok) {
+                    // Show success popup
+                    successPopup.style.display = 'block';
+                    
+                    // Reset form
+                    form.reset();
+                    
+                    // Hide popup after 3 seconds
+                    setTimeout(() => {
+                        successPopup.style.display = 'none';
+                    }, 3000);
+                } else {
+                    throw new Error('Form submission failed');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                alert('Sorry, there was an error submitting your form. Please try again.');
+            }
         });
     </script>
 </body>
