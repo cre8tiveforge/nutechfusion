@@ -12,6 +12,40 @@
             min-height: 100vh;
             padding: 6rem 2rem;
             color: #F8F8FF;
+            position: relative;
+        }
+        
+        .header-logo {
+            position: absolute;
+            top: 2rem;
+            left: 2rem;
+            display: block;
+            transition: opacity 0.2s;
+        }
+        
+        .header-logo:hover {
+            opacity: 0.8;
+        }
+        
+        .header-logo-img {
+            width: 60px;
+            height: 60px;
+            object-fit: contain;
+        }
+        
+        @media (max-width: 768px) {
+            .header-logo {
+                position: relative;
+                top: 0;
+                left: 0;
+                margin: 0 auto 2rem;
+                text-align: center;
+            }
+            
+            .header-logo-img {
+                width: 50px;
+                height: 50px;
+            }
         }
         
         .privacy-content {
@@ -112,6 +146,9 @@
 </head>
 <body>
     <div class="privacy-container">
+        <a href="index.html" class="header-logo">
+            <img src="assets/images/logo.png" alt="NuTech Fusion Logo" class="header-logo-img" />
+        </a>
         <div class="privacy-content">
             <h1>Privacy Policy</h1>
             <p>Last updated: February 11, 2025</p>
@@ -335,6 +372,7 @@
             <div class="footer-links">
                 <a href="index.html" class="footer-link">Home</a>
                 <a href="privacy.html" class="footer-link">Privacy Policy</a>
+                <a href="terms.html" class="footer-link">Terms of Service</a>
             </div>
             <div class="footer-copyright">
                 © 2024 NuTech Fusion. All rights reserved.
