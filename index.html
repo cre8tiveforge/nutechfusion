@@ -50,7 +50,7 @@
 </head>
 <body>
     <!-- A hidden form that Netlify can detect during build -->
-    <form name="consultation" netlify hidden>
+    <form name="consultation" netlify netlify-honeypot="bot-field" hidden>
         <input type="text" name="name" />
         <input type="email" name="email" />
         <select name="project-type"></select>
@@ -119,7 +119,12 @@
             </div>
 
             <div class="consultation-form">
-                <form name="consultation" netlify>
+                <form name="consultation" method="POST" data-netlify="true" netlify-honeypot="bot-field">
+                    <input type="hidden" name="form-name" value="consultation" />
+                    <p class="hidden">
+                        <label>Don't fill this out if you're human: <input name="bot-field" /></label>
+                    </p>
+                    
                     <div class="form-group">
                         <label class="form-label">Name</label>
                         <input type="text" name="name" class="form-input" placeholder="Your name" required>
@@ -181,21 +186,45 @@
         const form = document.querySelector('.consultation-form form');
         const successPopup = document.getElementById('successPopup');
 
-        form.addEventListener('submit', (e) => {
-            // Let the form submit naturally first
-            // This ensures Netlify processes it
-            setTimeout(() => {
-                // Show success popup
+        form.addEventListener('submit', async (e) => {
+            e.preventDefault();
+            
+            try {
+                const formData = new FormData(form);
+                
+                const response = await fetch("/", {
+                    method: "POST",
+                    headers: { "Content-Type": "application/x-www-form-urlencoded" },
+                    body: new URLSearchParams(formData).toString()
+                });
+                
+                if (response.ok) {
+                    // Show success popup
+                    successPopup.style.display = 'block';
+                    
+                    // Reset form
+                    form.reset();
+                    
+                    // Hide popup after animation
+                    setTimeout(() => {
+                        successPopup.style.display = 'none';
+                    }, 3000);
+                } else {
+                    throw new Error('Form submission failed');
+                }
+            } catch (error) {
+                console.error('Error:', error);
+                // Show error in popup
+                successPopup.style.background = 'linear-gradient(135deg, #FF3366 0%, #FF0000 100%)';
+                successPopup.textContent = '✕ Error submitting form. Please try again.';
                 successPopup.style.display = 'block';
-                
-                // Reset form after Netlify processes it
-                form.reset();
-                
-                // Hide popup after animation
                 setTimeout(() => {
                     successPopup.style.display = 'none';
+                    // Reset the background for future success messages
+                    successPopup.style.background = 'linear-gradient(135deg, #0066FF 0%, #6600FF 100%)';
+                    successPopup.textContent = '✓ Message sent successfully!';
                 }, 3000);
-            }, 1000);
+            }
         });
     </script>
 </body>
