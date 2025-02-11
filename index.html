@@ -11,26 +11,39 @@
         .success-popup {
             display: none;
             position: fixed;
-            top: 20px;
-            right: 20px;
+            top: 50%;
+            left: 50%;
+            transform: translate(-50%, -50%);
             background: linear-gradient(135deg, #0066FF 0%, #6600FF 100%);
             color: white;
-            padding: 1rem 2rem;
-            border-radius: 8px;
+            padding: 1.5rem 3rem;
+            border-radius: 12px;
             z-index: 1000;
             font-family: 'Inter', sans-serif;
-            animation: slideIn 0.3s ease-out;
-            box-shadow: 0 4px 12px rgba(0, 0, 0, 0.2);
+            font-size: 1.1rem;
+            text-align: center;
+            animation: fadeInOut 3s ease-in-out;
+            box-shadow: 0 8px 32px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(8px);
+            border: 1px solid rgba(255, 255, 255, 0.1);
         }
 
-        @keyframes slideIn {
-            from {
-                transform: translateX(100%);
+        @keyframes fadeInOut {
+            0% {
                 opacity: 0;
+                transform: translate(-50%, -40%);
             }
-            to {
-                transform: translateX(0);
+            15% {
                 opacity: 1;
+                transform: translate(-50%, -50%);
+            }
+            85% {
+                opacity: 1;
+                transform: translate(-50%, -50%);
+            }
+            100% {
+                opacity: 0;
+                transform: translate(-50%, -60%);
             }
         }
     </style>
@@ -45,7 +58,7 @@
     </form>
 
     <div class="success-popup" id="successPopup">
-        Message sent successfully! We'll get back to you soon.
+        ✓ Message sent successfully!
     </div>
 
     <div class="hero-container">
@@ -106,7 +119,7 @@
             </div>
 
             <div class="consultation-form">
-                <form name="consultation" method="POST" id="consultationForm">
+                <form name="consultation" method="POST" id="consultationForm" data-netlify="true" netlify-honeypot="bot-field">
                     <p class="hidden">
                         <label>Don't fill this out if you're human: <input name="bot-field" /></label>
                     </p>
@@ -177,10 +190,14 @@
             e.preventDefault();
             
             try {
+                const formData = new FormData(form);
                 const response = await fetch('/', {
                     method: 'POST',
-                    headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
-                    body: new URLSearchParams(new FormData(form)).toString()
+                    headers: {
+                        'Accept': 'application/x-www-form-urlencoded;charset=UTF-8',
+                        'Content-Type': 'application/x-www-form-urlencoded'
+                    },
+                    body: new URLSearchParams(formData).toString()
                 });
                 
                 if (response.ok) {
@@ -190,7 +207,7 @@
                     // Reset form
                     form.reset();
                     
-                    // Hide popup after 3 seconds
+                    // Hide and reset popup after animation
                     setTimeout(() => {
                         successPopup.style.display = 'none';
                     }, 3000);
@@ -199,7 +216,15 @@
                 }
             } catch (error) {
                 console.error('Error:', error);
-                alert('Sorry, there was an error submitting your form. Please try again.');
+                // Show error in the same popup style instead of an alert
+                successPopup.style.background = 'linear-gradient(135deg, #FF3366 0%, #FF0000 100%)';
+                successPopup.textContent = '✕ Error submitting form. Please try again.';
+                successPopup.style.display = 'block';
+                setTimeout(() => {
+                    successPopup.style.display = 'none';
+                    // Reset the background for future success messages
+                    successPopup.style.background = 'linear-gradient(135deg, #0066FF 0%, #6600FF 100%)';
+                }, 3000);
             }
         });
     </script>
