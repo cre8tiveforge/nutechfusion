@@ -23,7 +23,7 @@ export function BentoCard({ title, icon, description, className }: BentoCardProp
           <h3 className="text-xl font-bold text-white">{title}</h3>
         </div>
         <div className="mt-4" style={{ height: "4rem" }}>
-          <ul className="space-y-2 text-gray-300 transition-all duration-300 opacity-0 translate-y-2 group-hover:opacity-100 group-hover:translate-y-0">
+          <ul className="space-y-2 text-gray-300">
             {description.map((item, index) => (
               <li key={index}>{item}</li>
             ))}

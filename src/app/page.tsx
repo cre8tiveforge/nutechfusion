@@ -15,7 +15,7 @@ export default function Home() {
       {/* Hero Section */}
       <section className="relative pt-24 pb-16 px-4 sm:px-6 lg:px-8">
         <BackgroundPaths
-          className="absolute inset-0"
+          className="absolute inset-0 z-0 opacity-50"
           strokeWidth={0.4}
           pathCount={60}
           pathColor="rgba(0, 102, 255, 0.4)"
