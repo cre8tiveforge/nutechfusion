@@ -27,10 +27,10 @@ export default function PrivacyPage() {
                 <strong>Account</strong> means a unique account created for You to access our Service or parts of our Service.
               </li>
               <li>
-                <strong>Affiliate</strong> means an entity that controls, is controlled by or is under common control with a party, where "control" means ownership of 50% or more of the shares, equity interest or other securities entitled to vote for election of directors or other managing authority.
+                <strong>Affiliate</strong> means an entity that controls, is controlled by or is under common control with a party, where &quot;control&quot; means ownership of 50% or more of the shares, equity interest or other securities entitled to vote for election of directors or other managing authority.
               </li>
               <li>
-                <strong>Company</strong> (referred to as either "the Company", "We", "Us" or "Our" in this Agreement) refers to NUTECH FUSION LLC, 1 HOUSTON, TX 77051.
+                <strong>Company</strong> (referred to as either &quot;the Company&quot;, &quot;We&quot;, &quot;Us&quot; or &quot;Our&quot; in this Agreement) refers to NUTECH FUSION LLC, 1 HOUSTON, TX 77051.
               </li>
               <li>
                 <strong>Cookies</strong> are small files that are placed on Your computer, mobile device or any other device by a website, containing the details of Your browsing history on that website among its many uses.
@@ -50,7 +50,7 @@ export default function PrivacyPage() {
               <li>
                 <strong>Email Address:</strong> We collect your email address when you subscribe to our newsletter, contact us through the website, or create an account (if applicable).
                 <br />
-                <em>Purpose:</em> To communicate with you, respond to your inquiries, send you newsletters or updates you've subscribed to, and for account management if you create an account.
+                <em>Purpose:</em> To communicate with you, respond to your inquiries, send you newsletters or updates you&apos;ve subscribed to, and for account management if you create an account.
               </li>
               <li>
                 <strong>Usage Data</strong> (as described below)

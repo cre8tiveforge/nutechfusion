@@ -23,7 +23,7 @@ export default function SuccessPage() {
           Message Sent Successfully!
         </h2>
         <p className="mt-2 text-sm text-gray-600">
-          Thank you for reaching out. We'll get back to you as soon as possible.
+          Thank you for reaching out. We&apos;ll get back to you as soon as possible.
         </p>
         <div className="mt-8">
           <Link

@@ -215,7 +215,7 @@ export default function Home() {
       >
         <div className="container-width relative z-10">
           <div className="max-w-3xl mx-auto text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4 text-white">Let's Transform Your Business</h2>
+            <h2 className="text-3xl font-bold mb-4 text-white">Let&apos;s Transform Your Business</h2>
             <p className="text-gray-300">
               Ready to leverage cutting-edge AI and VR technology to drive your business forward? 
               We specialize in custom AI solutions like intelligent chatbots and process automation, 

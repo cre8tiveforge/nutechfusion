@@ -12,7 +12,7 @@ export default function TermsPage() {
           
           <div className="prose prose-invert max-w-none">
             <h2 className="text-3xl font-bold text-blue-400 mt-8 mb-4">1. Agreement to Terms</h2>
-            <p>These Terms of Service ("Terms") govern your access to and use of NuTech Fusion's website and services. By accessing or using our services, you agree to be bound by these Terms. If you disagree with any part of the terms, you may not access our services.</p>
+            <p>These Terms of Service (&quot;Terms&quot;) govern your access to and use of NuTech Fusion&apos;s website and services. By accessing or using our services, you agree to be bound by these Terms. If you disagree with any part of the terms, you may not access our services.</p>
 
             <h2 className="text-3xl font-bold text-blue-400 mt-8 mb-4">2. Services</h2>
             <p>NuTech Fusion provides AI and Virtual Reality solutions, including but not limited to:</p>
