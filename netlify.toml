@@ -1,14 +1,12 @@
 [build]
   command = "pnpm build"
-  publish = ".next"
+  publish = "out"
   
 [build.environment]
   NEXT_USE_NETLIFY_EDGE = "true"
   NODE_VERSION = "20"
   PNPM_VERSION = "8.15.1"
-
-[[plugins]]
-  package = "@netlify/plugin-nextjs"
+  NETLIFY_NEXT_PLUGIN_SKIP = "true"
 
 [[headers]]
   for = "/*"
