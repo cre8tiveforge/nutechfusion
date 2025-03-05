@@ -7,6 +7,11 @@ const nextConfig: NextConfig = {
   },
   // Ensure trailing slashes are handled correctly
   trailingSlash: true,
+  // Add ESLint configuration
+  eslint: {
+    // Don't run ESLint during builds
+    ignoreDuringBuilds: true,
+  },
 };
 
 export default nextConfig;

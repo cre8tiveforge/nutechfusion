@@ -62,7 +62,7 @@ export default function PrivacyPage() {
             <p>Usage Data may include:</p>
             <ul className="list-disc pl-6 space-y-4">
               <li>
-                <strong>Internet Protocol (IP) Address:</strong> Your device's IP address is logged when you access our Service.
+                <strong>Internet Protocol (IP) Address:</strong> Your device&apos;s IP address is logged when you access our Service.
                 <br />
                 <em>Purpose:</em> To analyze website traffic, monitor server performance, diagnose technical issues, and for security purposes.
               </li>
