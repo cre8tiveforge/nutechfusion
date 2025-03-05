@@ -1,6 +1,18 @@
 [build]
   command = "pnpm build"
   publish = ".next"
+  
+[build.environment]
+  NEXT_USE_NETLIFY_EDGE = "true"
+  NODE_VERSION = "20"
+  PNPM_VERSION = "8.15.1"
 
 [[plugins]]
   package = "@netlify/plugin-nextjs"
+
+[[headers]]
+  for = "/*"
+  [headers.values]
+    X-Frame-Options = "DENY"
+    X-Content-Type-Options = "noindex"
+    Referrer-Policy = "strict-origin-when-cross-origin"
