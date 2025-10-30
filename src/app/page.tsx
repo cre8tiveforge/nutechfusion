@@ -1,6 +1,8 @@
 import Header from '@/components/Header';
 import Hero from '@/components/Hero';
 import Services from '@/components/Services';
+import Portfolio from '@/components/Portfolio';
+import Technologies from '@/components/Technologies';
 import ConsultationForm from '@/components/ConsultationForm';
 import { WavyBackground } from "@/components/ui/wavy-background";
 
@@ -15,89 +17,11 @@ export default function Home() {
       {/* Services Section */}
       <Services />
 
-      {/* Technology Stack Section (Hidden) */}
-      {/* TODO: Add icons and implement visibility toggle */}
-      <section className="hidden py-16 px-4 sm:px-6 lg:px-8">
-        <div className="container-width">
-          <h2 className="text-3xl font-bold text-center mb-12 text-white">Technology Stack</h2>
-          
-          {/* Media Production */}
-          <div className="mb-12">
-            <h3 className="text-xl font-semibold mb-6 text-blue-400">Media Production</h3>
-            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
-              <div>Adobe Premiere</div>
-              <div>After Effects</div>
-              <div>Photoshop</div>
-              <div>DaVinci Resolve</div>
-              <div>Media Encoder</div>
-              <div>OBS Studio</div>
-            </div>
-          </div>
-          
-          {/* 3D & Game Development */}
-          <div className="mb-12">
-            <h3 className="text-xl font-semibold mb-6 text-blue-400">3D & Game Development</h3>
-            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
-              <div>Blender</div>
-              <div>Unity</div>
-              <div>Unreal Engine</div>
-              <div>ZBrush</div>
-              <div>Substance Painter</div>
-            </div>
-          </div>
+      {/* Portfolio Section */}
+      <Portfolio />
 
-          {/* Web Development */}
-          <div className="mb-12">
-            <h3 className="text-xl font-semibold mb-6 text-blue-400">Web Development</h3>
-            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
-              <div>JavaScript</div>
-              <div>TypeScript</div>
-              <div>Next.js</div>
-              <div>Tauri</div>
-              <div>React</div>
-              <div>Node.js</div>
-              <div>TailwindCSS</div>
-              <div>SQLite</div>
-              <div>Supabase</div>
-              <div>Firebase</div>
-            </div>
-          </div>
-
-          {/* AI & Machine Learning */}
-          <div className="mb-12">
-            <h3 className="text-xl font-semibold mb-6 text-blue-400">AI & Machine Learning</h3>
-            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
-              <div>Python</div>
-              <div>OpenAI</div>
-              <div>Anthropic</div>
-              <div>Mistral</div>
-              <div>Hugging Face</div>
-              <div>Google Gemini</div>
-              <div>CUDA</div>
-            </div>
-          </div>
-
-          {/* Development Tools */}
-          <div className="mb-12">
-            <h3 className="text-xl font-semibold mb-6 text-blue-400">Development Tools</h3>
-            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
-              <div>Git</div>
-              <div>Docker</div>
-              <div>Vercel</div>
-              <div>n8n</div>
-            </div>
-          </div>
-
-          {/* XR Development */}
-          <div className="mb-12">
-            <h3 className="text-xl font-semibold mb-6 text-blue-400">XR Development</h3>
-            <div className="grid grid-cols-2 md:grid-cols-4 lg:grid-cols-6 gap-6">
-              <div>OpenXR</div>
-              <div>ARKit</div>
-            </div>
-          </div>
-        </div>
-      </section>
+      {/* Technology Stack Section */}
+      <Technologies />
 
       {/* Consultation Section */}
       <WavyBackground 
