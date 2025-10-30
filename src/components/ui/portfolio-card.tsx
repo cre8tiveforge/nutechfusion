@@ -1,7 +1,6 @@
 'use client';
 
 import { cn } from '@/lib/utils';
-import { ExternalLink } from 'lucide-react';
 
 interface PortfolioCardProps {
   title: string;
@@ -25,39 +24,34 @@ export function PortfolioCard({
   return (
     <div
       className={cn(
-        "group relative flex-shrink-0 w-[90vw] sm:w-[450px] rounded-xl overflow-hidden bg-card border border-border hover:border-primary/50 transition-all duration-300 hover:shadow-xl hover:shadow-primary/10",
+        "group relative flex-shrink-0 w-[90vw] sm:w-[450px] rounded-xl overflow-hidden bg-card border-2 transition-all duration-300 hover:shadow-xl hover:shadow-primary/10 hover:scale-[1.02]",
         className
       )}
+      style={{
+        borderImage: `linear-gradient(135deg, ${gradient.includes('blue') ? '#3b82f6, #8b5cf6' : gradient.includes('purple') ? '#8b5cf6, #ec4899' : gradient.includes('emerald') ? '#10b981, #06b6d4' : gradient.includes('orange') ? '#f97316, #ef4444' : '#6366f1, #a855f7'}) 1`
+      }}
     >
-      {/* Image/Gradient Area */}
-      <div className={cn(
-        "relative h-64 overflow-hidden",
-        gradient
-      )}>
-        <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-        <div className="absolute bottom-4 left-4 right-4">
-          <span className="inline-block px-3 py-1 bg-primary/20 backdrop-blur-sm text-primary text-sm rounded-full border border-primary/30 mb-2">
-            {category}
-          </span>
-          <h3 className="text-2xl font-bold text-white">{title}</h3>
-        </div>
-      </div>
-
       {/* Content Area */}
       <div className="p-6 space-y-4">
-        {/* Description */}
-        <p className="text-muted-foreground text-sm leading-relaxed">
-          {description}
-        </p>
+        {/* Header */}
+        <div>
+          <span className="inline-block px-3 py-1 bg-primary/10 text-primary text-xs rounded-full border border-primary/20 mb-3">
+            {category}
+          </span>
+          <h3 className="text-xl font-bold text-foreground mb-3">{title}</h3>
+          <p className="text-muted-foreground text-sm leading-relaxed">
+            {description}
+          </p>
+        </div>
 
         {/* Technologies */}
         <div>
-          <h4 className="text-sm font-semibold text-foreground mb-2">Technologies Used</h4>
+          <h4 className="text-xs font-semibold text-foreground mb-2 uppercase tracking-wide">Technologies</h4>
           <div className="flex flex-wrap gap-2">
             {technologies.map((tech, index) => (
               <span
                 key={index}
-                className="px-2 py-1 bg-muted text-foreground text-xs rounded border border-border"
+                className="px-2 py-1 bg-muted text-foreground text-xs rounded border border-border hover:border-primary/30 transition-colors"
               >
                 {tech}
               </span>
@@ -68,11 +62,11 @@ export function PortfolioCard({
         {/* Outcomes */}
         {outcomes && outcomes.length > 0 && (
           <div>
-            <h4 className="text-sm font-semibold text-foreground mb-2">Key Outcomes</h4>
-            <ul className="space-y-1">
+            <h4 className="text-xs font-semibold text-foreground mb-2 uppercase tracking-wide">Key Results</h4>
+            <ul className="space-y-2">
               {outcomes.map((outcome, index) => (
                 <li key={index} className="flex items-start gap-2 text-sm text-muted-foreground">
-                  <span className="text-primary mt-0.5">✓</span>
+                  <span className="text-primary mt-0.5 font-bold">✓</span>
                   <span>{outcome}</span>
                 </li>
               ))}
@@ -80,6 +74,12 @@ export function PortfolioCard({
           </div>
         )}
       </div>
+
+      {/* Gradient accent overlay */}
+      <div className={cn(
+        "absolute top-0 left-0 right-0 h-1 opacity-70",
+        gradient
+      )} />
     </div>
   );
 }
