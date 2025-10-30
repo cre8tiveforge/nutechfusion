@@ -1,0 +1,30 @@
+{
+  "mcpServers": {
+    "memory": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-memory"
+      ],
+      "env": {
+        "MEMORY_FILE_PATH": ".claude/memory/conversations.jsonl"
+      }
+    },
+    "sequential-thinking": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-sequential-thinking"
+      ]
+    },
+    "filesystem": {
+      "command": "npx",
+      "args": [
+        "-y",
+        "@modelcontextprotocol/server-filesystem",
+        "d:\\ntfwebsite"
+      ]
+    }
+  },
+  "customInstructions": "This is the NuTech Fusion website project. Always refer to claude.md for project context, business requirements, and design guidelines. The website showcases AI solutions, VR development, 3D production, and technical services."
+}
