@@ -1,57 +1,19 @@
 import Header from '@/components/Header';
+import Hero from '@/components/Hero';
 import ConsultationForm from '@/components/ConsultationForm';
-import { AnimatedHero } from "@/components/ui/animated-hero";
 import { BentoCard } from "@/components/ui/bento-card";
 import { WavyBackground } from "@/components/ui/wavy-background";
-import { BackgroundPaths } from "@/components/ui/background-paths";
 
 export default function Home() {
-  const words = ["AI", "Virtual Reality", "Mixed Reality", "3D Production"];
-
   return (
     <main className="min-h-screen bg-background">
       <Header />
 
       {/* Hero Section */}
-      <section className="relative pt-24 pb-16 px-4 sm:px-6 lg:px-8">
-        <BackgroundPaths
-          className="absolute inset-0 z-0 opacity-50 dark:opacity-50"
-          strokeWidth={0.4}
-          pathCount={60}
-          pathColor="rgba(0, 102, 255, 0.4)"
-          animationDuration={35}
-        />
-        <div className="container-width relative z-10">
-          <div className="max-w-3xl mx-auto text-center">
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 text-foreground">
-              <span className="block mb-4">Transforming Business</span>
-              <span className="block">Through</span>
-              <AnimatedHero words={words} className="text-primary" />
-            </h1>
-            <p className="text-xl text-muted-foreground mb-8">
-              Custom AI Solutions & Immersive Experiences for Forward-Thinking Companies
-            </p>
-
-            <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-12">
-              <div className="card p-6 bg-card/80 backdrop-blur-sm border border-border">
-                <div className="text-3xl font-bold text-primary mb-2">10+</div>
-                <div className="text-muted-foreground">Years Experience</div>
-              </div>
-              <div className="card p-6 bg-card/80 backdrop-blur-sm border border-border">
-                <div className="text-3xl font-bold text-primary mb-2">100+</div>
-                <div className="text-muted-foreground">Projects Delivered</div>
-              </div>
-              <div className="card p-6 bg-card/80 backdrop-blur-sm border border-border">
-                <div className="text-3xl font-bold text-primary mb-2">20+</div>
-                <div className="text-muted-foreground">Technologies</div>
-              </div>
-            </div>
-          </div>
-        </div>
-      </section>
+      <Hero />
 
       {/* Services Section */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-muted/30">
+      <section id="services" className="py-16 px-4 sm:px-6 lg:px-8 bg-muted/30">
         <div className="container-width">
           <h2 className="text-3xl font-bold text-center mb-12 text-foreground">Our Core Services</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
