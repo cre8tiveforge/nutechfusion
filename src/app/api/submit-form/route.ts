@@ -4,19 +4,46 @@ import type { NextRequest } from 'next/server';
 export async function POST(request: NextRequest) {
   try {
     const data = await request.json();
-    
-    // Here you would typically send the data to your backend service
-    // For now, we'll just log it and return success
-    console.log('Form submission:', data);
 
-    // You can add your email service integration here
-    // Example: await sendEmail(data);
+    // Get n8n webhook URL from environment
+    const webhookUrl = process.env.N8N_FORM_WEBHOOK_URL;
 
-    return NextResponse.json({ success: true }, { status: 200 });
+    if (!webhookUrl) {
+      console.error('N8N_FORM_WEBHOOK_URL not configured');
+      return NextResponse.json(
+        { success: false, message: 'Form service not configured' },
+        { status: 500 }
+      );
+    }
+
+    // Send form data to n8n workflow
+    const n8nResponse = await fetch(webhookUrl, {
+      method: 'POST',
+      headers: {
+        'Content-Type': 'application/json',
+      },
+      body: JSON.stringify(data),
+    });
+
+    // Check if response has content
+    const text = await n8nResponse.text();
+    let responseData;
+
+    try {
+      responseData = text ? JSON.parse(text) : {};
+    } catch {
+      responseData = { success: n8nResponse.ok };
+    }
+
+    // Return n8n's response to the client
+    return NextResponse.json(responseData, {
+      status: n8nResponse.status
+    });
+
   } catch (error) {
     console.error('Form submission error:', error);
     return NextResponse.json(
-      { error: 'Internal server error' },
+      { success: false, message: 'Failed to submit form. Please try again.' },
       { status: 500 }
     );
   }

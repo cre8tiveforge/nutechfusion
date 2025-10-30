@@ -9,13 +9,13 @@ export default function Home() {
   const words = ["AI", "Virtual Reality", "Mixed Reality", "3D Production"];
 
   return (
-    <main className="min-h-screen bg-gradient-to-b from-gray-900 to-black">
+    <main className="min-h-screen bg-background">
       <Header />
-      
+
       {/* Hero Section */}
       <section className="relative pt-24 pb-16 px-4 sm:px-6 lg:px-8">
         <BackgroundPaths
-          className="absolute inset-0 z-0 opacity-50"
+          className="absolute inset-0 z-0 opacity-50 dark:opacity-50"
           strokeWidth={0.4}
           pathCount={60}
           pathColor="rgba(0, 102, 255, 0.4)"
@@ -23,27 +23,27 @@ export default function Home() {
         />
         <div className="container-width relative z-10">
           <div className="max-w-3xl mx-auto text-center">
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold mb-6 text-foreground">
               <span className="block mb-4">Transforming Business</span>
               <span className="block">Through</span>
-              <AnimatedHero words={words} className="text-blue-400" />
+              <AnimatedHero words={words} className="text-primary" />
             </h1>
-            <p className="text-xl text-gray-300 mb-8">
+            <p className="text-xl text-muted-foreground mb-8">
               Custom AI Solutions & Immersive Experiences for Forward-Thinking Companies
             </p>
-            
+
             <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-12">
-              <div className="card p-6 bg-gray-900/50 backdrop-blur-sm">
-                <div className="text-3xl font-bold text-blue-400 mb-2">10+</div>
-                <div className="text-gray-300">Years Experience</div>
+              <div className="card p-6 bg-card/80 backdrop-blur-sm border border-border">
+                <div className="text-3xl font-bold text-primary mb-2">10+</div>
+                <div className="text-muted-foreground">Years Experience</div>
               </div>
-              <div className="card p-6 bg-gray-900/50 backdrop-blur-sm">
-                <div className="text-3xl font-bold text-blue-400 mb-2">100+</div>
-                <div className="text-gray-300">Projects Delivered</div>
+              <div className="card p-6 bg-card/80 backdrop-blur-sm border border-border">
+                <div className="text-3xl font-bold text-primary mb-2">100+</div>
+                <div className="text-muted-foreground">Projects Delivered</div>
               </div>
-              <div className="card p-6 bg-gray-900/50 backdrop-blur-sm">
-                <div className="text-3xl font-bold text-blue-400 mb-2">20+</div>
-                <div className="text-gray-300">Technologies</div>
+              <div className="card p-6 bg-card/80 backdrop-blur-sm border border-border">
+                <div className="text-3xl font-bold text-primary mb-2">20+</div>
+                <div className="text-muted-foreground">Technologies</div>
               </div>
             </div>
           </div>
@@ -51,9 +51,9 @@ export default function Home() {
       </section>
 
       {/* Services Section */}
-      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-gray-900/50">
+      <section className="py-16 px-4 sm:px-6 lg:px-8 bg-muted/30">
         <div className="container-width">
-          <h2 className="text-3xl font-bold text-center mb-12 text-white">Our Core Services</h2>
+          <h2 className="text-3xl font-bold text-center mb-12 text-foreground">Our Core Services</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
             <BentoCard
               title="AI Solutions"
@@ -215,20 +215,20 @@ export default function Home() {
       >
         <div className="container-width relative z-10">
           <div className="max-w-3xl mx-auto text-center mb-12">
-            <h2 className="text-3xl font-bold mb-4 text-white">Let&apos;s Transform Your Business</h2>
-            <p className="text-gray-300">
-              Ready to leverage cutting-edge AI and VR technology to drive your business forward? 
-              We specialize in custom AI solutions like intelligent chatbots and process automation, 
+            <h2 className="text-3xl font-bold mb-4 text-foreground">Let&apos;s Transform Your Business</h2>
+            <p className="text-muted-foreground">
+              Ready to leverage cutting-edge AI and VR technology to drive your business forward?
+              We specialize in custom AI solutions like intelligent chatbots and process automation,
               immersive VR training experiences, and advanced technical solutions.
             </p>
           </div>
-          
+
           <div className="flex flex-wrap justify-center gap-4 mb-12">
-            <span className="px-4 py-2 bg-blue-900/50 text-blue-200 rounded-full border border-blue-500/20 backdrop-blur-sm">Virtual Reality</span>
-            <span className="px-4 py-2 bg-blue-900/50 text-blue-200 rounded-full border border-blue-500/20 backdrop-blur-sm">AI Integration</span>
-            <span className="px-4 py-2 bg-blue-900/50 text-blue-200 rounded-full border border-blue-500/20 backdrop-blur-sm">3D Production</span>
-            <span className="px-4 py-2 bg-blue-900/50 text-blue-200 rounded-full border border-blue-500/20 backdrop-blur-sm">Technical Solutions</span>
-            <span className="px-4 py-2 bg-blue-900/50 text-blue-200 rounded-full border border-blue-500/20 backdrop-blur-sm">Consulting</span>
+            <span className="px-4 py-2 bg-primary/10 text-primary rounded-full border border-primary/20 backdrop-blur-sm">Virtual Reality</span>
+            <span className="px-4 py-2 bg-primary/10 text-primary rounded-full border border-primary/20 backdrop-blur-sm">AI Integration</span>
+            <span className="px-4 py-2 bg-primary/10 text-primary rounded-full border border-primary/20 backdrop-blur-sm">3D Production</span>
+            <span className="px-4 py-2 bg-primary/10 text-primary rounded-full border border-primary/20 backdrop-blur-sm">Technical Solutions</span>
+            <span className="px-4 py-2 bg-primary/10 text-primary rounded-full border border-primary/20 backdrop-blur-sm">Consulting</span>
           </div>
 
           <ConsultationForm />

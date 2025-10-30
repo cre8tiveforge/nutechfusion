@@ -3,12 +3,13 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { useState } from 'react';
+import { ThemeToggle } from './ui/theme-toggle';
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
 
   return (
-    <header className="fixed w-full top-0 z-50 bg-gray-900/80 backdrop-blur-md border-b border-gray-800">
+    <header className="fixed w-full top-0 z-50 bg-background/80 backdrop-blur-md border-b border-border">
       <div className="container-width flex items-center justify-between h-16 px-4">
         <Link href="/" className="flex items-center space-x-2">
           <Image
@@ -19,21 +20,22 @@ export default function Header() {
             className="w-auto h-8"
             priority
           />
-          <span className="font-bold text-lg text-white">NuTech Fusion</span>
+          <span className="font-bold text-lg text-foreground">NuTech Fusion</span>
         </Link>
 
         {/* Desktop Navigation */}
-        <nav className="hidden md:flex items-center space-x-8">
-          <Link href="/" className="text-gray-300 hover:text-blue-400 transition-colors">
+        <nav className="hidden md:flex items-center space-x-6">
+          <Link href="/" className="text-muted-foreground hover:text-primary transition-colors">
             Home
           </Link>
-          <Link href="/terms" className="text-gray-300 hover:text-blue-400 transition-colors">
+          <Link href="/terms" className="text-muted-foreground hover:text-primary transition-colors">
             Terms
           </Link>
-          <Link href="/privacy" className="text-gray-300 hover:text-blue-400 transition-colors">
+          <Link href="/privacy" className="text-muted-foreground hover:text-primary transition-colors">
             Privacy
           </Link>
-          <button 
+          <ThemeToggle />
+          <button
             onClick={() => {
               document.querySelector('#consultation')?.scrollIntoView({ behavior: 'smooth' });
             }}
@@ -69,30 +71,34 @@ export default function Header() {
 
       {/* Mobile Navigation */}
       {isMenuOpen && (
-        <nav className="md:hidden bg-gray-900 border-t border-gray-800">
+        <nav className="md:hidden bg-background border-t border-border">
           <div className="container-width px-4 py-2 space-y-2">
             <Link
               href="/"
-              className="block py-2 text-gray-300 hover:text-blue-400 transition-colors"
+              className="block py-2 text-muted-foreground hover:text-primary transition-colors"
               onClick={() => setIsMenuOpen(false)}
             >
               Home
             </Link>
             <Link
               href="/terms"
-              className="block py-2 text-gray-300 hover:text-blue-400 transition-colors"
+              className="block py-2 text-muted-foreground hover:text-primary transition-colors"
               onClick={() => setIsMenuOpen(false)}
             >
               Terms
             </Link>
             <Link
               href="/privacy"
-              className="block py-2 text-gray-300 hover:text-blue-400 transition-colors"
+              className="block py-2 text-muted-foreground hover:text-primary transition-colors"
               onClick={() => setIsMenuOpen(false)}
             >
               Privacy
             </Link>
-            <button 
+            <div className="flex items-center justify-between py-2">
+              <span className="text-sm text-muted-foreground">Theme</span>
+              <ThemeToggle />
+            </div>
+            <button
               onClick={() => {
                 document.querySelector('#consultation')?.scrollIntoView({ behavior: 'smooth' });
                 setIsMenuOpen(false);

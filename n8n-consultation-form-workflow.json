@@ -1,0 +1,179 @@
+{
+  "name": "NuTech Fusion - Consultation Form",
+  "nodes": [
+    {
+      "parameters": {
+        "httpMethod": "POST",
+        "path": "consultation-form",
+        "responseMode": "responseNode",
+        "options": {}
+      },
+      "id": "webhook-trigger",
+      "name": "Webhook",
+      "type": "n8n-nodes-base.webhook",
+      "typeVersion": 2,
+      "position": [240, 300],
+      "webhookId": "consultation-form"
+    },
+    {
+      "parameters": {
+        "jsCode": "// Validation function\nconst requiredFields = ['name', 'email', 'projectType', 'description'];\nconst errors = [];\n\nconst data = $input.item.json.body;\n\n// Check required fields\nfor (const field of requiredFields) {\n  if (!data[field] || String(data[field]).trim() === '') {\n    errors.push(`Missing required field: ${field}`);\n  }\n}\n\n// Validate email format\nconst emailRegex = /^[^\\s@]+@[^\\s@]+\\.[^\\s@]+$/;\nif (data.email && !emailRegex.test(data.email)) {\n  errors.push('Invalid email format');\n}\n\n// Validate project type\nconst validProjectTypes = ['ai-integration', 'virtual-reality', '3d-production', 'tech-solutions', 'consulting'];\nif (data.projectType && !validProjectTypes.includes(data.projectType)) {\n  errors.push('Invalid project type');\n}\n\n// Validate description length\nif (data.description && (data.description.length < 10 || data.description.length > 500)) {\n  errors.push('Description must be between 10 and 500 characters');\n}\n\n// Return result\nreturn {\n  valid: errors.length === 0,\n  errors: errors,\n  data: data\n};"
+      },
+      "id": "validate-data",
+      "name": "Validate Data",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [460, 300]
+    },
+    {
+      "parameters": {
+        "conditions": {
+          "boolean": [
+            {
+              "value1": "={{ $json.valid }}",
+              "value2": true
+            }
+          ]
+        }
+      },
+      "id": "validation-check",
+      "name": "IF Valid",
+      "type": "n8n-nodes-base.if",
+      "typeVersion": 2,
+      "position": [680, 300]
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ { success: false, message: 'Validation failed', errors: $json.errors } }}",
+        "options": {
+          "responseCode": 400
+        }
+      },
+      "id": "error-response",
+      "name": "Error Response",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [900, 480]
+    },
+    {
+      "parameters": {
+        "jsCode": "// Format message for Telegram\nconst data = $input.item.json.data;\n\nconst projectTypeNames = {\n  'ai-integration': 'AI Integration',\n  'virtual-reality': 'Virtual Reality',\n  '3d-production': '3D Production',\n  'tech-solutions': 'Technical Solutions',\n  'consulting': 'Consulting'\n};\n\nconst message = `🔔 *NEW CONSULTATION REQUEST*\n\n👤 *Name:* ${data.name}\n📧 *Email:* ${data.email}\n\n🎯 *Project Type:* ${projectTypeNames[data.projectType] || data.projectType}\n\n📝 *Description:*\n${data.description}\n\n🕐 *Submitted:* ${new Date().toLocaleString()}\n🌐 *Source:* Website`;\n\nreturn {\n  ...data,\n  telegramMessage: message\n};"
+      },
+      "id": "format-message",
+      "name": "Format Telegram Message",
+      "type": "n8n-nodes-base.code",
+      "typeVersion": 2,
+      "position": [900, 120]
+    },
+    {
+      "parameters": {
+        "authentication": "predefinedCredentialType",
+        "nodeCredentialType": "telegramApi",
+        "resource": "message",
+        "operation": "sendMessage",
+        "chatId": "={{ $env.TELEGRAM_CHAT_ID }}",
+        "text": "={{ $json.telegramMessage }}",
+        "additionalFields": {
+          "parse_mode": "Markdown"
+        }
+      },
+      "id": "send-telegram",
+      "name": "Send Telegram",
+      "type": "n8n-nodes-base.telegram",
+      "typeVersion": 1.2,
+      "position": [1120, 120],
+      "credentials": {
+        "telegramApi": {
+          "id": "telegram-credentials",
+          "name": "Telegram Bot"
+        }
+      }
+    },
+    {
+      "parameters": {
+        "respondWith": "json",
+        "responseBody": "={{ { success: true, message: 'Your consultation request has been received. We\\'ll be in touch within 1-2 business days.' } }}",
+        "options": {}
+      },
+      "id": "success-response",
+      "name": "Success Response",
+      "type": "n8n-nodes-base.respondToWebhook",
+      "typeVersion": 1,
+      "position": [1340, 120]
+    }
+  ],
+  "connections": {
+    "Webhook": {
+      "main": [
+        [
+          {
+            "node": "Validate Data",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Validate Data": {
+      "main": [
+        [
+          {
+            "node": "IF Valid",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "IF Valid": {
+      "main": [
+        [
+          {
+            "node": "Format Telegram Message",
+            "type": "main",
+            "index": 0
+          }
+        ],
+        [
+          {
+            "node": "Error Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Format Telegram Message": {
+      "main": [
+        [
+          {
+            "node": "Send Telegram",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    },
+    "Send Telegram": {
+      "main": [
+        [
+          {
+            "node": "Success Response",
+            "type": "main",
+            "index": 0
+          }
+        ]
+      ]
+    }
+  },
+  "pinData": {},
+  "settings": {
+    "executionOrder": "v1"
+  },
+  "staticData": null,
+  "tags": [],
+  "triggerCount": 1,
+  "updatedAt": "2025-10-30T17:00:00.000Z",
+  "versionId": "1"
+}
