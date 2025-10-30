@@ -24,7 +24,7 @@ export function PortfolioCard({
   return (
     <div
       className={cn(
-        "group relative flex-shrink-0 w-[90vw] sm:w-[450px] rounded-xl overflow-hidden bg-card border-2 transition-all duration-300 hover:shadow-xl hover:shadow-primary/10 hover:scale-[1.02]",
+        "group relative w-full rounded-xl overflow-hidden bg-card border-2 transition-all duration-300 hover:shadow-xl hover:shadow-primary/10 hover:scale-[1.02]",
         className
       )}
       style={{
