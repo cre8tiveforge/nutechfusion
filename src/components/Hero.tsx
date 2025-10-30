@@ -11,7 +11,7 @@ export default function Hero() {
   const words = ["AI", "Virtual Reality", "Mixed Reality", "3D Production"];
 
   return (
-    <section className="relative min-h-screen flex items-center justify-center px-4 sm:px-6 lg:px-8">
+    <section className="relative px-4 sm:px-6 lg:px-8 pt-32 pb-20">
       <BackgroundPaths
         className="absolute inset-0 z-0 opacity-50 dark:opacity-50"
         strokeWidth={0.4}
@@ -19,7 +19,7 @@ export default function Hero() {
         pathColor="rgba(0, 102, 255, 0.4)"
         animationDuration={35}
       />
-      <div className="container-width relative z-10 py-24">
+      <div className="container-width relative z-10">
         <div className="max-w-4xl mx-auto text-center">
           {/* Main Headline */}
           <h1 className="text-5xl sm:text-6xl lg:text-7xl font-bold mb-6">
@@ -44,7 +44,7 @@ export default function Hero() {
           </p>
 
           {/* CTA Buttons */}
-          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-16">
+          <div className="flex flex-col sm:flex-row gap-4 justify-center mb-12">
             <EnhancedButton
               variant="primary"
               size="lg"
@@ -64,14 +64,11 @@ export default function Hero() {
           </div>
 
           {/* Stats */}
-          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 mb-16">
+          <div className="grid grid-cols-1 sm:grid-cols-3 gap-6">
             <StatsCounter value={10} suffix="+" label="Years Experience" />
             <StatsCounter value={100} suffix="+" label="Projects Delivered" />
             <StatsCounter value={20} suffix="+" label="Technologies" />
           </div>
-
-          {/* Scroll Indicator */}
-          <ScrollIndicator targetId="services" />
         </div>
       </div>
     </section>

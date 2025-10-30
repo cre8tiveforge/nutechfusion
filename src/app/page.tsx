@@ -1,7 +1,7 @@
 import Header from '@/components/Header';
 import Hero from '@/components/Hero';
+import Services from '@/components/Services';
 import ConsultationForm from '@/components/ConsultationForm';
-import { BentoCard } from "@/components/ui/bento-card";
 import { WavyBackground } from "@/components/ui/wavy-background";
 
 export default function Home() {
@@ -13,72 +13,7 @@ export default function Home() {
       <Hero />
 
       {/* Services Section */}
-      <section id="services" className="py-16 px-4 sm:px-6 lg:px-8 bg-muted/30">
-        <div className="container-width">
-          <h2 className="text-3xl font-bold text-center mb-12 text-foreground">Our Core Services</h2>
-          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-8">
-            <BentoCard
-              title="AI Solutions"
-              icon={
-                <svg className="w-12 h-12" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M12 2C6.48 2 2 6.48 2 12s4.48 10 10 10 10-4.48 10-10S17.52 2 12 2zm0 3c.83 0 1.5.67 1.5 1.5S12.83 8 12 8s-1.5-.67-1.5-1.5S11.17 5 12 5zm3.5 9.5c0 2.33-1.75 3.5-3.5 3.5s-3.5-1.17-3.5-3.5V11h1v3.5c0 1.47 1.07 2.5 2.5 2.5s2.5-1.03 2.5-2.5V11h1v3.5z"/>
-                </svg>
-              }
-              description={[
-                "Custom Chatbots & Virtual Assistants",
-                "Process Automation & Workflow Optimization",
-                "AI-Powered Content Generation",
-                "Predictive Analytics & Insights"
-              ]}
-            />
-
-            <BentoCard
-              title="Virtual Reality"
-              icon={
-                <svg className="w-12 h-12" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M20 4H4c-1.1 0-2 .9-2 2v12c0 1.1.9 2 2 2h16c1.1 0 2-.9 2-2V6c0-1.1-.9-2-2-2zm0 14H4V6h16v12zM6 10h12v2H6z"/>
-                </svg>
-              }
-              description={[
-                "Immersive Training Simulations",
-                "Virtual Product Demonstrations",
-                "Interactive Virtual Tours",
-                "VR-Based Learning Environments"
-              ]}
-            />
-
-            <BentoCard
-              title="3D Production"
-              icon={
-                <svg className="w-12 h-12" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M19.35 10.04C18.67 6.59 15.64 4 12 4 9.11 4 6.6 5.64 5.35 8.04 2.34 8.36 0 10.91 0 14c0 3.31 2.69 6 6 6h13c2.76 0 5-2.24 5-5 0-2.64-2.05-4.78-4.65-4.96zM19 18H6c-2.21 0-4-1.79-4-4s1.79-4 4-4h.71C7.37 7.69 9.48 6 12 6c3.04 0 5.5 2.46 5.5 5.5v.5H19c1.66 0 3 1.34 3 3s-1.34 3-3 3z"/>
-                </svg>
-              }
-              description={[
-                "3D Modeling & Animation",
-                "Product Visualization",
-                "Architectural Visualization",
-                "Interactive 3D Experiences"
-              ]}
-            />
-
-            <BentoCard
-              title="Technical Solutions"
-              icon={
-                <svg className="w-12 h-12" fill="currentColor" viewBox="0 0 24 24">
-                  <path d="M3 17v2h6v-2H3zM3 5v2h10V5H3zm10 16v-2h8v-2h-8v-2h-2v6h2zM7 9v2H3v2h4v2h2V9H7zm14 4v-2H11v2h10zm-6-4h2V7h4V5h-4V3h-2v6z"/>
-                </svg>
-              }
-              description={[
-                "Custom Software Development",
-                "System Integration",
-                "Technical Consulting",
-                "Digital Transformation"
-              ]}
-            />
-          </div>
-        </div>
-      </section>
+      <Services />
 
       {/* Technology Stack Section (Hidden) */}
       {/* TODO: Add icons and implement visibility toggle */}
