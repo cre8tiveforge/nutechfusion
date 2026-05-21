@@ -77,6 +77,10 @@ export default function PrivacyPage() {
                 <em>Purpose:</em> To understand user navigation patterns, identify popular content, and improve website structure and user experience.
               </li>
             </ul>
+            <h2 className="text-3xl font-bold text-blue-400 mt-8 mb-4">SMS / Text Messaging</h2>
+            <p>When you opt in to receive SMS notifications from NuTech Fusion LLC, we collect your mobile phone number and the content and metadata of the messages we send in order to deliver account notifications, alerts, and briefings from the ARGUS assistant.</p>
+            <p><strong>No mobile information (including your phone number) will be shared with or sold to third parties or affiliates for marketing or promotional purposes. SMS opt-in consent and phone numbers are never shared with any third parties.</strong></p>
+            <p>We retain SMS-related data only as long as needed to provide the service. You can opt out of SMS messages at any time by replying STOP; reply HELP for assistance. Message and data rates may apply.</p>
           </div>
         </div>
       </div>
