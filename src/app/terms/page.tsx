@@ -64,6 +64,16 @@ export default function TermsPage() {
               <li>Email: contact@nutechfusion.com</li>
               <li>Website: <a href="https://www.nutechfusion.com/contact" className="text-blue-400 hover:text-blue-300" target="_blank" rel="noopener noreferrer">www.nutechfusion.com/contact</a></li>
             </ul>
+            <h2 className="text-3xl font-bold text-blue-400 mt-8 mb-4">9. SMS / Text Messaging Communications</h2>
+            <p>By providing your mobile phone number and opting in, you consent to receive automated SMS text messages from NuTech Fusion LLC related to the ARGUS assistant service, including account status notifications, system alerts, and scheduled daily briefings.</p>
+            <ul className="list-disc pl-6 space-y-2">
+              <li>Program: ARGUS account notifications, alerts, and briefings.</li>
+              <li>Message frequency is recurring and varies by account activity (approximately 100 messages per month).</li>
+              <li>Message and data rates may apply.</li>
+              <li>To opt out at any time, reply STOP. For help, reply HELP or email support@nutechfusion.com.</li>
+              <li>Carriers are not liable for delayed or undelivered messages.</li>
+              <li>No mobile information will be shared with third parties or affiliates for marketing or promotional purposes. See our Privacy Policy for details.</li>
+            </ul>
           </div>
         </div>
       </div>
