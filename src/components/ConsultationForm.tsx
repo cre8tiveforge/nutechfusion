@@ -1,42 +1,24 @@
-'use client';
-
-import { useState, FormEvent } from 'react';
-import { useRouter } from 'next/navigation';
-
 export default function ConsultationForm() {
-  const router = useRouter();
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    projectType: '',
-    description: ''
-  });
-
-  const handleSubmit = async (e: FormEvent) => {
-    e.preventDefault();
-    
-    try {
-      const response = await fetch('/api/submit-form', {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json',
-        },
-        body: JSON.stringify(formData),
-      });
-
-      if (response.ok) {
-        router.push('/success');
-      } else {
-        throw new Error('Form submission failed');
-      }
-    } catch (error) {
-      console.error('Error submitting form:', error);
-      alert('There was an error submitting the form. Please try again.');
-    }
-  };
-
   return (
-    <form onSubmit={handleSubmit} className="space-y-6 max-w-2xl mx-auto card p-8" id="consultation">
+    <form
+      name="consultation"
+      method="POST"
+      action="/success/"
+      data-netlify="true"
+      data-netlify-honeypot="bot-field"
+      className="space-y-6 max-w-2xl mx-auto card p-8"
+      id="consultation"
+    >
+      {/* Required by Netlify: routes the POST to the "consultation" form. */}
+      <input type="hidden" name="form-name" value="consultation" />
+
+      {/* Honeypot. Real visitors never see this; bots fill it and get dropped. */}
+      <p className="hidden">
+        <label>
+          Don&apos;t fill this out if you&apos;re human: <input name="bot-field" />
+        </label>
+      </p>
+
       <div>
         <label htmlFor="name" className="block text-sm font-medium text-gray-300">
           Name
@@ -49,8 +31,6 @@ export default function ConsultationForm() {
           pattern="[A-Za-z\s]{2,}"
           className="mt-1 block w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-md shadow-sm text-gray-100 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
           placeholder="Your name"
-          value={formData.name}
-          onChange={(e) => setFormData({ ...formData, name: e.target.value })}
         />
       </div>
 
@@ -63,11 +43,8 @@ export default function ConsultationForm() {
           id="email"
           name="email"
           required
-          pattern="[a-z0-9._%+-]+@[a-z0-9.-]+\.[a-z]{2,}$"
           className="mt-1 block w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-md shadow-sm text-gray-100 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
           placeholder="Your email"
-          value={formData.email}
-          onChange={(e) => setFormData({ ...formData, email: e.target.value })}
         />
       </div>
 
@@ -79,9 +56,8 @@ export default function ConsultationForm() {
           id="projectType"
           name="projectType"
           required
+          defaultValue=""
           className="mt-1 block w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-md shadow-sm text-gray-100 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
-          value={formData.projectType}
-          onChange={(e) => setFormData({ ...formData, projectType: e.target.value })}
         >
           <option value="">Select project type</option>
           <option value="virtual-reality">Virtual Reality</option>
@@ -104,19 +80,57 @@ export default function ConsultationForm() {
           rows={4}
           className="mt-1 block w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-md shadow-sm text-gray-100 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
           placeholder="Tell us about your project"
-          value={formData.description}
-          onChange={(e) => setFormData({ ...formData, description: e.target.value })}
         />
       </div>
 
+      {/*
+        SMS opt-in — required for A2P 10DLC campaign approval.
+        Both fields are OPTIONAL and the checkbox must stay unchecked by default:
+        carriers reject campaigns where consent is pre-selected or is a condition
+        of using the service. Do not add `required` or `defaultChecked` here.
+      */}
       <div>
-        <button
-          type="submit"
-          className="w-full btn-primary"
-        >
+        <label htmlFor="phone" className="block text-sm font-medium text-gray-300">
+          Mobile phone <span className="text-gray-500">(optional)</span>
+        </label>
+        <input
+          type="tel"
+          id="phone"
+          name="phone"
+          autoComplete="tel"
+          className="mt-1 block w-full px-3 py-2 bg-gray-800 border border-gray-700 rounded-md shadow-sm text-gray-100 placeholder-gray-500 focus:outline-none focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+          placeholder="(555) 555-5555"
+        />
+      </div>
+
+      <div className="flex items-start gap-3">
+        <input
+          type="checkbox"
+          id="smsConsent"
+          name="smsConsent"
+          value="yes"
+          className="mt-1 h-4 w-4 shrink-0 rounded border-gray-700 bg-gray-800 text-blue-500 focus:ring-2 focus:ring-blue-500"
+        />
+        <label htmlFor="smsConsent" className="text-sm text-gray-400">
+          I agree to receive recurring automated text messages from NuTech Fusion at the
+          number provided. Message frequency varies. Message and data rates may apply.
+          Reply STOP to unsubscribe, HELP for help. See our{' '}
+          <a href="/privacy/" className="text-blue-400 underline hover:text-blue-300">
+            Privacy Policy
+          </a>{' '}
+          and{' '}
+          <a href="/terms/" className="text-blue-400 underline hover:text-blue-300">
+            Terms
+          </a>
+          .
+        </label>
+      </div>
+
+      <div>
+        <button type="submit" className="w-full btn-primary">
           Schedule a Consultation
         </button>
       </div>
     </form>
   );
-} 
+}
